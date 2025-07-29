@@ -1,46 +1,137 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Texto com Cores em Gradiente Rosa a Roxo</title>
-  <style>
-    body {
-      background-color: #1a1a1a;
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      color: #fff;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SUPER T - O universo das modelos</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
 
-    /* Cores do rosa forte ao roxo (8 tons) */
-    .color-1 { color: #e60073; } /* rosa forte */
-    .color-2 { color: #d1006a; }
-    .color-3 { color: #bb005f; }
-    .color-4 { color: #a30053; }
-    .color-5 { color: #8b0048; }
-    .color-6 { color: #73003d; }
-    .color-7 { color: #5b0031; }
-    .color-8 { color: #430025; } /* roxo escuro */
+    /* Cores do rosa forte até roxo, para aplicar linha a linha */
+    .color-1 { color: #e60073; } /* rosa forte */
+    .color-2 { color: #d1006a; }
+    .color-3 { color: #bb005f; }
+    .color-4 { color: #a30053; }
+    .color-5 { color: #8b0048; }
+    .color-6 { color: #73003d; }
+    .color-7 { color: #5b0031; }
+    .color-8 { color: #430025; } /* roxo escuro */
 
-    /* Opcional: para dar espaçamento entre linhas */
-    p {
-      margin: 0.8rem 0;
-      font-size: 1.2rem;
-    }
-  </style>
+    header {
+      padding: 30px 0;
+      background: #fff;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 10px auto 30px;
+      max-width: 700px;
+    }
+
+    .botao-supert {
+      background-color: #ffb6c1;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 12px;
+      transition: background 0.4s ease;
+      cursor: pointer;
+    }
+
+    .botao-supert:hover {
+      background: linear-gradient(90deg, #5bcffa, #ffb6c1, #ffffff, #ffb6c1, #5bcffa);
+      color: #000;
+    }
+
+    footer {
+      background-color: #fff;
+      padding: 40px 20px;
+      border-top: 2px solid #eee;
+      margin-top: 50px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #ffb6c1;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #999;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* Aplicando as cores a cada elemento, linha a linha */
+    header h1.color-1 { color: #e60073; }
+    header p.color-2 { color: #d1006a; }
+    main h2.color-3 { color: #bb005f; }
+    main p.color-4 { color: #a30053; }
+    footer p.color-5 { color: #8b0048; }
+    footer p a.color-6 { color: #73003d; }
+
+    /* Botão com rosa forte, mantém cor branca do texto */
+    .botao-supert {
+      background-color: #e60073;
+    }
+
+    /* Responsividade */
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <h1>Exemplo de texto com cores em tons de rosa até roxo</h1>
+  <header>
+    <h1 class="color-1">SUPER T</h1>
+    <p class="color-2">O universo exclusivo para modelos adultas e seus fãs. Assinaturas, liberdade e poder feminino em um só lugar.</p>
+    <button class="botao-supert">Assinar Agora</button>
+  </header>
 
-  <p class="color-1">Linha 1: Este é um tom rosa forte.</p>
-  <p class="color-2">Linha 2: O rosa vai escurecendo um pouco.</p>
-  <p class="color-3">Linha 3: Aqui um tom intermediário de rosa.</p>
-  <p class="color-4">Linha 4: Quase chegando no magenta.</p>
-  <p class="color-5">Linha 5: Um rosa mais fechado, quase roxo.</p>
-  <p class="color-6">Linha 6: Um tom de roxo claro.</p>
-  <p class="color-7">Linha 7: Roxo mais escuro.</p>
-  <p class="color-8">Linha 8: Roxo forte, quase vinho.</p>
+  <main>
+    <h2 class="color-3">📸 Quer ser uma modelo SUPER T?</h2>
+    <p class="color-4">Preencha o formulário abaixo e solicite seu cadastro na nossa plataforma premium.</p>
+
+    <form action="mailto:contatosupert@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="nome" placeholder="Seu nome completo" required />
+      <input type="email" name="email" placeholder="Seu e-mail de contato" required />
+      <textarea name="mensagem" rows="4" placeholder="Fale um pouco sobre você..." required></textarea>
+      <button type="submit" class="botao-supert">Enviar Solicitação</button>
+    </form>
+  </main>
+
+  <footer>
+    <p class="color-5">© 2025 SUPER T. Todos os direitos reservados.</p>
+    <p>Contato: <a href="mailto:contatosupert@gmail.com" class="color-6">contatosupert@gmail.com</a></p>
+  </footer>
 
 </body>
+
 </html>
