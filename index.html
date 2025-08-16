@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Café com Trans - Início</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Café com Trans</h2>
+    <ul class="nav">
+        <li><a href="podcast.html">Ouvir Podcast</a></li>
+        <li><a href="https://cafecomtrans.wordpress.com" target="_blank">Notícias</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+    </ul>
+    <div class="about">
+        Informações atualizadas e recursos para a comunidade trans no Brasil.
+    </div>
+</div>
+
+<div class="main">
+    <h1>Bem-vindo ao Café com Trans</h1>
+    <p>Este é o ponto de encontro da nossa comunidade. Aqui podes ouvir podcasts, ficar por dentro das notícias, conhecer recursos importantes e acompanhar eventos.</p>
+
+    <div class="cards">
+        <div class="card">
+            <div class="icon">🎙️</div>
+            <h3>Ouvir Podcast</h3>
+            <p>Escuta os episódios mais recentes e conecta-te com histórias inspiradoras.</p>
+            <button onclick="window.location.href='podcast.html'">Acessar</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📰</div>
+            <h3>Notícias</h3>
+            <p>Visita o nosso blog com artigos e novidades sobre a comunidade trans.</p>
+            <button onclick="window.open('https://cafecomtrans.wordpress.com', '_blank')">Acessar</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🤝</div>
+            <h3>Comunidade</h3>
+            <p>Encontra organizações e grupos de apoio para te conectares.</p>
+            <button onclick="window.location.href='comunidade.html'">Acessar</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📅</div>
+            <h3>Eventos</h3>
+            <p>Consulta palestras, marchas e encontros importantes para a comunidade.</p>
+            <button onclick="window.location.href='eventos.html'">Acessar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.nav a').forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add('active');
+    }
+});
+</script>
+
+</body>
+</html>
