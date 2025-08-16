@@ -13,13 +13,12 @@
         font-family: Arial, sans-serif;
     }
 
-     body {
-    display: flex;
-    min-height: 100vh;
-    background-color: #f8f9ff;
-    color: #333;
-}
-          }
+    /* Layout base: sidebar à esquerda, conteúdo à direita */
+    body {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f8f9ff;
+        color: #333;
     }
 
     /* Menu lateral */
@@ -69,10 +68,19 @@
         border-radius: 8px;
     }
 
+    /* Área de conteúdo: coluna com main (flex:1) + footer */
+    .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0; /* evita overflow horizontal */
+    }
+
     /* Conteúdo principal */
     .main {
-        flex: 1;
+        flex: 1;            /* ocupa o espaço disponível acima do footer */
         padding: 40px;
+        overflow: auto;     /* rolagem se o conteúdo passar da tela */
     }
 
     .main h1 {
@@ -147,15 +155,16 @@
     .card button:hover {
         opacity: 0.8;
     }
+
+    /* Rodapé */
     footer {
         text-align: center;
         padding: 20px;
-        margin-top: 40px;
         font-size: 14px;
         color: #666;
-        background: #f8f9ff; /* opcional, mesma cor do fundo */
-}
-    
+        background: #f8f9ff;
+        border-top: 1px solid #e0e0e0;
+    }
 </style>
 </head>
 <body>
@@ -163,82 +172,85 @@
 <div class="sidebar">
     <h2>Café com Trans</h2>
     <ul class="nav">
-           <li><a href="index.html" class="active">Inicio</a></li>  
-           <li><a href="podcast.html">Ouvir Podcast</a></li>
-           <li><a href="https://cafecomtrans.wordpress.com">Notícias</a></li>
-           <li><a href="comunidade.html">Comunidade</a></li>
-           <li><a href="eventos.html">Eventos</a></li>        
-            <li><a href="loja.html">Loja</a></li>  
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="podcast.html">Ouvir Podcast</a></li>
+        <li><a href="https://cafecomtrans.wordpress.com">Notícias</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="loja.html">Loja</a></li>
     </ul>
     <div class="about">
         Informações atualizadas e recursos para a comunidade trans no Brasil.
     </div>
 </div>
 
-<div class="main">
-    <h1>Pagina do Podcast Cafe com Trans BR</h1>
-    <p>Conecte-se com organizações, grupos de apoio e recursos essenciais para a comunidade trans</p>
+<div class="content">
+    <div class="main">
+        <h1>Pagina do Podcast Cafe com Trans BR</h1>
+        <p>Conecte-se com organizações, grupos de apoio e recursos essenciais para a comunidade trans</p>
 
-    <div class="cards">
-        <div class="card">
-            <div class="icon">🏠</div>
-            <h3>Casa Nem</h3>
-            <p>Casa de acolhida para pessoas LGBTI+ em situação de vulnerabilidade</p>
-            <div class="info"><strong>Contato:</strong> casanem.org.br</div>
-            <div class="info"><strong>Local:</strong> Rio de Janeiro, RJ</div>
-            <button>Saber Mais</button>
-        </div>
+        <div class="cards">
+            <div class="card">
+                <div class="icon">🏠</div>
+                <h3>Casa Nem</h3>
+                <p>Casa de acolhida para pessoas LGBTI+ em situação de vulnerabilidade</p>
+                <div class="info"><strong>Contato:</strong> casanem.org.br</div>
+                <div class="info"><strong>Local:</strong> Rio de Janeiro, RJ</div>
+                <button>Saber Mais</button>
+            </div>
 
-        <div class="card">
-            <div class="icon">🛡️</div>
-            <h3>ANTRA</h3>
-            <p>Associação Nacional de Travestis e Transexuais</p>
-            <div class="info"><strong>Contato:</strong> antrabrasil.org</div>
-            <div class="info"><strong>Local:</strong> Nacional</div>
-            <button>Saber Mais</button>
-        </div>
+            <div class="card">
+                <div class="icon">🛡️</div>
+                <h3>ANTRA</h3>
+                <p>Associação Nacional de Travestis e Transexuais</p>
+                <div class="info"><strong>Contato:</strong> antrabrasil.org</div>
+                <div class="info"><strong>Local:</strong> Nacional</div>
+                <button>Saber Mais</button>
+            </div>
 
-        <div class="card">
-            <div class="icon">❤️</div>
-            <h3>Centro de Referência LGBT</h3>
-            <p>Atendimento psicológico, jurídico e social</p>
-            <div class="info"><strong>Contato:</strong> Varia por cidade</div>
-            <div class="info"><strong>Local:</strong> Diversas cidades</div>
-            <button>Saber Mais</button>
-        </div>
+            <div class="card">
+                <div class="icon">❤️</div>
+                <h3>Centro de Referência LGBT</h3>
+                <p>Atendimento psicológico, jurídico e social</p>
+                <div class="info"><strong>Contato:</strong> Varia por cidade</div>
+                <div class="info"><strong>Local:</strong> Diversas cidades</div>
+                <button>Saber Mais</button>
+            </div>
 
-        <div class="card">
-            <div class="icon">👥</div>
-            <h3>Grupo TransRevolução</h3>
-            <p>Grupo de apoio e ativismo trans</p>
-            <div class="info"><strong>Contato:</strong> transrevolucao@gmail.com</div>
-            <div class="info"><strong>Local:</strong> São Paulo, SP</div>
-            <button>Saber Mais</button>
-        </div>
+            <div class="card">
+                <div class="icon">👥</div>
+                <h3>Grupo TransRevolução</h3>
+                <p>Grupo de apoio e ativismo trans</p>
+                <div class="info"><strong>Contato:</strong> transrevolucao@gmail.com</div>
+                <div class="info"><strong>Local:</strong> São Paulo, SP</div>
+                <button>Saber Mais</button>
+            </div>
 
-        <div class="card">
-            <div class="icon">🎧</div>
-            <h3>CVV - Centro de Valorização da Vida</h3>
-            <p>Apoio emocional e prevenção ao suicídio</p>
-            <div class="info"><strong>Contato:</strong> 188 (gratuito)</div>
-            <div class="info"><strong>Local:</strong> 24h - Nacional</div>
-            <button>Saber Mais</button>
-        </div>
+            <div class="card">
+                <div class="icon">🎧</div>
+                <h3>CVV - Centro de Valorização da Vida</h3>
+                <p>Apoio emocional e prevenção ao suicídio</p>
+                <div class="info"><strong>Contato:</strong> 188 (gratuito)</div>
+                <div class="info"><strong>Local:</strong> 24h - Nacional</div>
+                <button>Saber Mais</button>
+            </div>
 
-        <div class="card">
-            <div class="icon">💬</div>
-            <h3>Grupo Dignidade</h3>
-            <p>ONG de defesa dos direitos LGBTI+</p>
-            <div class="info"><strong>Contato:</strong> grupodignidade.org.br</div>
-            <div class="info"><strong>Local:</strong> Curitiba, PR</div>
-            <button>Saber Mais</button>
+            <div class="card">
+                <div class="icon">💬</div>
+                <h3>Grupo Dignidade</h3>
+                <p>ONG de defesa dos direitos LGBTI+</p>
+                <div class="info"><strong>Contato:</strong> grupodignidade.org.br</div>
+                <div class="info"><strong>Local:</strong> Curitiba, PR</div>
+                <button>Saber Mais</button>
+            </div>
         </div>
     </div>
+
+    <!-- Rodapé -->
+    <footer>
+        Café com Trans é uma marca registrada desde 2020
+    </footer>
 </div>
-<!-- Rodapé -->
-<footer>
-  Café com Trans é uma marca registrada desde 2020
-</footer>
-  </p>
+
 </body>
 </html>
