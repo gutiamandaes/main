@@ -1,43 +1,171 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Café com Trans - Comunidade</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TransInfo • Comunidade</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f1a; /* fundo geral bem claro no print, mas vamos dar um leve contraste */
+      --panel:#ffffff;
+      --muted:#6b7280;
+      --text:#111827;
+      --primary-start:#4f46e5; /* indigo-600 */
+      --primary-end:#ec4899;   /* pink-500 */
+      --soft:#f3f4f6;
+      --sidebar:#f8fafc;
+      --shadow:0 10px 25px rgba(17,24,39,.08), 0 6px 10px rgba(17,24,39,.04);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,ui-sans-serif; color:var(--text); background:#fafafa}
+
+    /* Layout */
+    .wrap{display:grid; grid-template-columns: 280px 1fr; min-height:100vh; max-width:1200px; margin:0 auto}
+    aside{background:var(--sidebar); border-right:1px solid #e5e7eb; padding:24px 20px;}
+    main{padding:32px 28px 56px}
+
+    /* Sidebar */
+    .brand{display:flex; align-items:center; gap:12px; margin-bottom:28px}
+    .brand-badge{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary-start),var(--primary-end)); color:#fff; font-weight:700}
+    .brand-title{line-height:1}
+    .brand-title small{display:block; color:var(--muted); font-size:12px; font-weight:500}
+
+    .nav-group{margin-top:18px}
+    .nav-title{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:18px 0 8px}
+    .nav{display:grid;gap:6px}
+    .nav a{display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; color:#111827; text-decoration:none; font-weight:500}
+    .nav a:hover{background:#eef2ff}
+    .nav a.active{background:#eef2ff; outline:2px solid #e0e7ff}
+
+    .chip{width:24px; height:24px; display:grid; place-items:center; border-radius:8px; background:#eef2ff}
+
+    .note{margin-top:28px; background:#fff; padding:14px 14px; border-radius:14px; box-shadow:var(--shadow); font-size:14px; color:#374151}
+
+    /* Header */
+    .headline{ text-align:center; margin-bottom:10px;}
+    .headline h1{font-size:36px; letter-spacing:.2px; margin:0 0 6px; font-weight:800}
+    .headline p{margin:0; color:#374151}
+
+    /* Cards */
+    .grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:22px; margin-top:28px}
+    .card{ background:#fff; border-radius:18px; box-shadow:var(--shadow); padding:24px; display:flex; flex-direction:column; gap:10px}
+    .card .icon{ width:36px; height:36px; border-radius:12px; display:grid; place-items:center; background:#eef2ff}
+    .card h3{ margin:4px 0 2px; font-size:20px}
+    .meta{ font-size:14px; color:#374151; line-height:1.5}
+    .meta strong{ color:#111827 }
+
+    .btn{margin-top:10px; border:0; background:linear-gradient(90deg,var(--primary-start),var(--primary-end)); color:#fff; font-weight:600; padding:10px 14px; border-radius:12px; cursor:pointer; text-decoration:none; text-align:center}
+    .btn:active{transform:translateY(1px)}
+
+    /* Responsive */
+    @media (max-width: 1100px){ .grid{grid-template-columns: repeat(2,1fr);} }
+    @media (max-width: 860px){ .wrap{grid-template-columns: 1fr}; aside{position:sticky; top:0; z-index:10} }
+    @media (max-width: 720px){ .grid{grid-template-columns: 1fr} }
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <aside>
+      <div class="brand">
+        <div class="brand-badge">TI</div>
+        <div class="brand-title">
+          <strong>TransInfo</strong>
+          <small>Skill da Alexa</small>
+        </div>
+      </div>
 
-<div class="sidebar">
-    <h2>Café com Trans</h2>
-    <ul class="nav">
-        <li><a href="podcast.html">Ouvir Podcast</a></li>
-        <li><a href="noticias.html">Notícias</a></li>
-        <li><a href="comunidade.html">Comunidade</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="loja.html">Loja</a></li>
-    </ul>
-    <div class="about">
-        Informações atualizadas e recursos para a comunidade trans no Brasil.
-    </div>
-</div>
+      <div class="nav-group">
+        <div class="nav-title">Navegação</div>
+        <nav class="nav">
+          <a href="#" aria-label="Alexa Skill"><span class="chip">🔊</span> Alexa Skill</a>
+          <a href="#" aria-label="Notícias"><span class="chip">📰</span> Notícias</a>
+          <a href="#" class="active" aria-current="page"><span class="chip">👥</span> Comunidade</a>
+          <a href="#" aria-label="Eventos"><span class="chip">📅</span> Eventos</a>
+        </nav>
+      </div>
 
-<div class="main">
-    <h1>Recursos da Comunidade</h1>
-    <p>Conecte-se com organizações, grupos de apoio e recursos essenciais para a comunidade trans</p>
+      <div class="nav-group">
+        <div class="nav-title">Sobre</div>
+        <div class="note">
+          <strong>Informações</strong><br>
+          atualizadas e recursos<br>
+          para a comunidade<br>
+          trans no Brasil.
+        </div>
+      </div>
+    </aside>
 
-    <div class="cards">
-        <!-- Insira os cards de comunidade aqui (igual ao index) -->
-    </div>
-</div>
+    <main>
+      <header class="headline">
+        <h1>Recursos da Comunidade</h1>
+        <p>Conecte-se com organizações, grupos de apoio e recursos essenciais para a<br/> comunidade trans</p>
+      </header>
 
-<script>
-document.querySelectorAll('.nav a').forEach(link => {
-    if (link.href === window.location.href) {
-        link.classList.add('active');
-    }
-});
-</script>
+      <section class="grid" aria-label="Cartões de recursos">
+        <!-- Card 1 -->
+        <article class="card">
+          <div class="icon" aria-hidden="true">🏠</div>
+          <h3>Casa Nem</h3>
+          <p class="meta">Casa de acolhida para pessoas LGBTI+ em situação de vulnerabilidade</p>
+          <p class="meta"><strong>Contato:</strong> casanem.org.br</p>
+          <p class="meta"><strong>Local:</strong> Rio de Janeiro, RJ</p>
+          <a class="btn" href="#">Saber Mais</a>
+        </article>
 
+        <!-- Card 2 -->
+        <article class="card">
+          <div class="icon" aria-hidden="true">🛡️</div>
+          <h3>ANTRA</h3>
+          <p class="meta">Associação Nacional de Travestis e Transexuais</p>
+          <p class="meta"><strong>Contato:</strong> antrabrasil.org</p>
+          <p class="meta"><strong>Local:</strong> Nacional</p>
+          <a class="btn" href="#">Saber Mais</a>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <div class="icon" aria-hidden="true">💜</div>
+          <h3>Centro de Referência LGBT</h3>
+          <p class="meta">Atendimento psicológico, jurídico e social</p>
+          <p class="meta"><strong>Contato:</strong> Varia por cidade</p>
+          <p class="meta"><strong>Local:</strong> Diversas cidades</p>
+          <a class="btn" href="#">Saber Mais</a>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card">
+          <div class="icon" aria-hidden="true">👥</div>
+          <h3>Grupo TransRevolução</h3>
+          <p class="meta">Grupo de apoio e ativismo trans</p>
+          <p class="meta"><strong>Contato:</strong> transrevolucao@gmail.com</p>
+          <p class="meta"><strong>Local:</strong> São Paulo, SP</p>
+          <a class="btn" href="#">Saber Mais</a>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card">
+          <div class="icon" aria-hidden="true">☎️</div>
+          <h3>CVV - Centro de Valorização da Vida</h3>
+          <p class="meta">Apoio emocional e prevenção ao suicídio</p>
+          <p class="meta"><strong>Contato:</strong> 188 (gratuito)</p>
+          <p class="meta"><strong>Local:</strong> 24h – Nacional</p>
+          <a class="btn" href="#">Saber Mais</a>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card">
+          <div class="icon" aria-hidden="true">💬</div>
+          <h3>Grupo Dignidade</h3>
+          <p class="meta">ONG de defesa dos direitos LGBTI+</p>
+          <p class="meta"><strong>Contato:</strong> grupodignidade.org.br</p>
+          <p class="meta"><strong>Local:</strong> Curitiba, PR</p>
+          <a class="btn" href="#">Saber Mais</a>
+        </article>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
