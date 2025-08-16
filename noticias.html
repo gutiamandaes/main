@@ -13,8 +13,7 @@
     <ul class="nav">
         <li><a href="index.html">Início</a></li>
         <li><a href="podcast.html">Ouvir Podcast</a></li>
-        <!-- Aqui o link só ativa o frame, sem sair da página -->
-        <li><a href="noticias.html" target="noticiasFrame" class="active">Notícias</a></li>
+        <li><a href="noticias.html" class="active">Notícias</a></li>
         <li><a href="comunidade.html">Comunidade</a></li>
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="loja.html">Loja</a></li>
@@ -28,21 +27,39 @@
     <h1>Notícias</h1>
     <p>Confira as últimas notícias da comunidade trans.</p>
 
-    <!-- Frame já carregando o blog -->
-    <iframe 
-        name="noticiasFrame"
-        src="https://cafecomtrans.wordpress.com"
-        style="width:100%; height:80vh; border:none;">
-    </iframe>
+    <ul id="rss-feed"></ul>
 </div>
 
 <script>
-// Destaca o item ativo do menu
-document.querySelectorAll('.nav a').forEach(link => {
-    if (link.href === window.location.href) {
-        link.classList.add('active');
+async function carregarRSS() {
+    const url = "https://cafecomtrans.wordpress.com/feed/";
+    try {
+        const response = await fetch("https://api.allorigins.win/get?url=" + encodeURIComponent(url));
+        const data = await response.json();
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data.contents, "text/xml");
+        const items = xml.querySelectorAll("item");
+
+        let html = "";
+        items.forEach((item, index) => {
+            if (index < 5) { // Mostra só os 5 mais recentes
+                const titulo = item.querySelector("title").textContent;
+                const link = item.querySelector("link").textContent;
+                const dataPub = item.querySelector("pubDate").textContent;
+
+                html += `<li>
+                    <a href="${link}" target="_blank">${titulo}</a><br>
+                    <small>${dataPub}</small>
+                </li>`;
+            }
+        });
+        document.getElementById("rss-feed").innerHTML = html;
+    } catch (e) {
+        document.getElementById("rss-feed").innerHTML = "<li>Erro ao carregar notícias.</li>";
     }
-});
+}
+
+carregarRSS();
 </script>
 
 </body>
