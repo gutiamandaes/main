@@ -1,96 +1,34 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Café com Trans - Início</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="sidebar">
-    <h2>Café com Trans</h2>
-    <ul class="nav">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="podcast.html">Ouvir Podcast</a></li>
-        <li><a href="noticias.html">Notícias</a></li>
-        <li><a href="comunidade.html">Comunidade</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="loja.html">Loja</a></li>
-    </ul>
-    <div class="about">
-        Informações atualizadas e recursos para a comunidade trans no Brasil.
-    </div>
-</div>
-
 <div class="main">
     <h1>Bem-vindo ao Café com Trans</h1>
     <p>Conecte-se com a comunidade, acompanhe podcasts, notícias e eventos que celebram a diversidade.</p>
 
     <div class="cards">
         <div class="card">
-            <div class="icon">🏠</div>
-            <h3>Casa Nem</h3>
-            <p>Casa de acolhida para pessoas LGBTI+ em situação de vulnerabilidade</p>
-            <div class="info"><strong>Contato:</strong> casanem.org.br</div>
-            <div class="info"><strong>Local:</strong> Rio de Janeiro, RJ</div>
-            <button onclick="window.open('https://casanem.org.br', '_blank')">Saber Mais</button>
-        </div>
-
-        <div class="card">
-            <div class="icon">🛡️</div>
-            <h3>ANTRA</h3>
-            <p>Associação Nacional de Travestis e Transexuais</p>
-            <div class="info"><strong>Contato:</strong> antrabrasil.org</div>
-            <div class="info"><strong>Local:</strong> Nacional</div>
-            <button onclick="window.open('https://antrabrasil.org', '_blank')">Saber Mais</button>
-        </div>
-
-        <div class="card">
-            <div class="icon">❤️</div>
-            <h3>Centro de Referência LGBT</h3>
-            <p>Atendimento psicológico, jurídico e social</p>
-            <div class="info"><strong>Contato:</strong> Varia por cidade</div>
-            <div class="info"><strong>Local:</strong> Diversas cidades</div>
-            <button>Saber Mais</button>
-        </div>
-
-        <div class="card">
-            <div class="icon">👥</div>
-            <h3>Grupo TransRevolução</h3>
-            <p>Grupo de apoio e ativismo trans</p>
-            <div class="info"><strong>Contato:</strong> transrevolucao@gmail.com</div>
-            <div class="info"><strong>Local:</strong> São Paulo, SP</div>
-            <button>Saber Mais</button>
-        </div>
-
-        <div class="card">
             <div class="icon">🎧</div>
-            <h3>CVV - Centro de Valorização da Vida</h3>
-            <p>Apoio emocional e prevenção ao suicídio</p>
-            <div class="info"><strong>Contato:</strong> 188 (gratuito)</div>
-            <div class="info"><strong>Local:</strong> 24h - Nacional</div>
-            <button>Saber Mais</button>
+            <h3>Ouça nosso Podcast</h3>
+            <p>Acompanhe histórias, entrevistas e debates sobre a comunidade trans.</p>
+            <button onclick="window.location.href='podcast.html'">Ir para Podcast</button>
         </div>
 
         <div class="card">
-            <div class="icon">💬</div>
-            <h3>Grupo Dignidade</h3>
-            <p>ONG de defesa dos direitos LGBTI+</p>
-            <div class="info"><strong>Contato:</strong> grupodignidade.org.br</div>
-            <div class="info"><strong>Local:</strong> Curitiba, PR</div>
-            <button onclick="window.open('https://grupodignidade.org.br', '_blank')">Saber Mais</button>
+            <div class="icon">📰</div>
+            <h3>Notícias e Atualizações</h3>
+            <p>Fique por dentro das novidades e artigos relevantes.</p>
+            <button onclick="window.location.href='noticias.html'">Ir para Notícias</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎉</div>
+            <h3>Eventos e Atividades</h3>
+            <p>Confira eventos e encontros da comunidade trans.</p>
+            <button onclick="window.location.href='eventos.html'">Ir para Eventos</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🛒</div>
+            <h3>Loja Oficial</h3>
+            <p>Produtos exclusivos que apoiam a comunidade.</p>
+            <button onclick="window.location.href='loja.html'">Ir para Loja</button>
         </div>
     </div>
 </div>
-
-<script>
-document.querySelectorAll('.nav a').forEach(link => {
-    if (link.href === window.location.href) {
-        link.classList.add('active');
-    }
-});
-</script>
-
-</body>
-</html>
