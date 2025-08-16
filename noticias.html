@@ -13,7 +13,7 @@
     <ul class="nav">
         <li><a href="index.html">Início</a></li>
         <li><a href="podcast.html">Ouvir Podcast</a></li>
-        <li><a href="noticias.html" class="active">Notícias</a></li>
+        <li><a href="https://cafecomtrans.wordpress.com" target="noticiasFrame" class="active">Notícias</a></li>
         <li><a href="comunidade.html">Comunidade</a></li>
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="loja.html">Loja</a></li>
@@ -29,13 +29,13 @@
 
     <!-- Frame fixo para carregar o blog -->
     <iframe 
-        src="https://cafecomtrans.wordpress.com" 
         name="noticiasFrame"
         style="width:100%; height:80vh; border:none;">
     </iframe>
 </div>
 
 <script>
+// Destaca o item ativo do menu
 document.querySelectorAll('.nav a').forEach(link => {
     if (link.href === window.location.href) {
         link.classList.add('active');
