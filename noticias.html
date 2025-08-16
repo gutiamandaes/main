@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Café com Trans - Notícias</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Café com Trans</h2>
+    <ul class="nav">
+        <li><a href="podcast.html">Ouvir Podcast</a></li>
+        <li><a href="noticias.html">Notícias</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+    </ul>
+    <div class="about">
+        Informações atualizadas e recursos para a comunidade trans no Brasil.
+    </div>
+</div>
+
+<div class="main">
+    <h1>Notícias</h1>
+    <p>Confira as últimas notícias da comunidade trans.</p>
+
+    <iframe src="https://cafecomtrans.wordpress.com" style="width:100%; height:80vh; border:none;"></iframe>
+</div>
+
+<script>
+document.querySelectorAll('.nav a').forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add('active');
+    }
+});
+</script>
+
+</body>
+</html>
