@@ -11,4 +11,50 @@
 <div class="sidebar">
     <h2>Café com Trans</h2>
     <ul class="nav">
-        <li><a href="podcast.html
+        <li><a href="index.html">Início</a></li>
+        <li><a href="podcast.html">Ouvir Podcast</a></li>
+        <li><a href="noticias.html">Notícias</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="loja.html">Loja</a></li>
+    </ul>
+    <div class="about">
+        Informações atualizadas e recursos para a comunidade trans no Brasil.
+    </div>
+</div>
+
+<div class="main">
+    <h1>Eventos</h1>
+    <p>Confira os próximos eventos da comunidade trans.</p>
+
+    <div class="cards">
+        <div class="card">
+            <div class="icon">🎤</div>
+            <h3>Palestra Diversidade e Inclusão</h3>
+            <p>Um encontro sobre direitos LGBTI+ e inclusão social.</p>
+            <div class="info"><strong>Data:</strong> 10/09/2025</div>
+            <div class="info"><strong>Local:</strong> São Paulo, SP</div>
+            <button onclick="window.open('https://www.evento1.com.br', '_blank')">Mais Informações</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎉</div>
+            <h3>Festival TransArte</h3>
+            <p>Evento cultural com música, exposições e performances artísticas.</p>
+            <div class="info"><strong>Data:</strong> 22/09/2025</div>
+            <div class="info"><strong>Local:</strong> Rio de Janeiro, RJ</div>
+            <button onclick="window.open('https://www.evento2.com.br', '_blank')">Mais Informações</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.nav a').forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add('active');
+    }
+});
+</script>
+
+</body>
+</html>
