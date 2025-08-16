@@ -12,9 +12,10 @@
     <h2>Café com Trans</h2>
     <ul class="nav">
         <li><a href="podcast.html">Ouvir Podcast</a></li>
-        <li><a href="https://cafecomtrans.wordpress.com" target="_blank">Notícias</a></li>
-        <li><a href="comunidade.html" class="active">Comunidade</a></li>
+        <li><a href="noticias.html">Notícias</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
         <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="loja.html">Loja</a></li>
     </ul>
     <div class="about">
         Informações atualizadas e recursos para a comunidade trans no Brasil.
@@ -26,61 +27,17 @@
     <p>Conecte-se com organizações, grupos de apoio e recursos essenciais para a comunidade trans</p>
 
     <div class="cards">
-        <div class="card">
-            <div class="icon">🏠</div>
-            <h3>Casa Nem</h3>
-            <p>Casa de acolhida para pessoas LGBTI+ em situação de vulnerabilidade</p>
-            <div class="info"><strong>Contato:</strong> casanem.org.br</div>
-            <div class="info"><strong>Local:</strong> Rio de Janeiro, RJ</div>
-            <button>Saber Mais</button>
-        </div>
-
-        <div class="card">
-            <div class="icon">🛡️</div>
-            <h3>ANTRA</h3>
-            <p>Associação Nacional de Travestis e Transexuais</p>
-            <div class="info"><strong>Contato:</strong> antrabrasil.org</div>
-            <div class="info"><strong>Local:</strong> Nacional</div>
-            <button>Saber Mais</button>
-        </div>
-
-        <div class="card">
-            <div class="icon">❤️</div>
-            <h3>Centro de Referência LGBT</h3>
-            <p>Atendimento psicológico, jurídico e social</p>
-            <div class="info"><strong>Contato:</strong> Varia por cidade</div>
-            <div class="info"><strong>Local:</strong> Diversas cidades</div>
-            <button>Saber Mais</button>
-        </div>
-
-        <div class="card">
-            <div class="icon">👥</div>
-            <h3>Grupo TransRevolução</h3>
-            <p>Grupo de apoio e ativismo trans</p>
-            <div class="info"><strong>Contato:</strong> transrevolucao@gmail.com</div>
-            <div class="info"><strong>Local:</strong> São Paulo, SP</div>
-            <button>Saber Mais</button>
-        </div>
-
-        <div class="card">
-            <div class="icon">🎧</div>
-            <h3>CVV - Centro de Valorização da Vida</h3>
-            <p>Apoio emocional e prevenção ao suicídio</p>
-            <div class="info"><strong>Contato:</strong> 188 (gratuito)</div>
-            <div class="info"><strong>Local:</strong> 24h - Nacional</div>
-            <button>Saber Mais</button>
-        </div>
-
-        <div class="card">
-            <div class="icon">💬</div>
-            <h3>Grupo Dignidade</h3>
-            <p>ONG de defesa dos direitos LGBTI+</p>
-            <div class="info"><strong>Contato:</strong> grupodignidade.org.br</div>
-            <div class="info"><strong>Local:</strong> Curitiba, PR</div>
-            <button>Saber Mais</button>
-        </div>
+        <!-- Insira os cards de comunidade aqui (igual ao index) -->
     </div>
 </div>
+
+<script>
+document.querySelectorAll('.nav a').forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add('active');
+    }
+});
+</script>
 
 </body>
 </html>
