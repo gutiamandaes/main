@@ -13,6 +13,7 @@
     <ul class="nav">
         <li><a href="index.html">Início</a></li>
         <li><a href="podcast.html">Ouvir Podcast</a></li>
+        <!-- Aqui o link só ativa o frame, sem sair da página -->
         <li><a href="https://cafecomtrans.wordpress.com" target="noticiasFrame" class="active">Notícias</a></li>
         <li><a href="comunidade.html">Comunidade</a></li>
         <li><a href="eventos.html">Eventos</a></li>
@@ -27,9 +28,10 @@
     <h1>Notícias</h1>
     <p>Confira as últimas notícias da comunidade trans.</p>
 
-    <!-- Frame fixo para carregar o blog -->
+    <!-- Frame já carregando o blog -->
     <iframe 
         name="noticiasFrame"
+        src="https://cafecomtrans.wordpress.com"
         style="width:100%; height:80vh; border:none;">
     </iframe>
 </div>
