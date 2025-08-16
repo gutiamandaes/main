@@ -1,207 +1,229 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comunidade - Café com Trans</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      background-color: #f8f9ff;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Café com Trans</title>
+<style>
+    /* Reset básico */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
     }
 
-    /* Sidebar */
+    body {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f8f9ff;
+        color: #333;
+    }
+
+    /* Menu lateral */
     .sidebar {
-      width: 250px;
-      background: #fff;
-      padding: 20px;
-      border-right: 1px solid #eee;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
+        width: 220px;
+        background-color: #fff;
+        border-right: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
     }
 
     .sidebar h2 {
-      font-size: 20px;
-      margin-bottom: 20px;
+        font-size: 20px;
+        margin-bottom: 20px;
     }
 
-    .sidebar a {
-      display: block;
-      text-decoration: none;
-      color: #333;
-      margin: 12px 0;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: all 0.3s;
+    .nav {
+        list-style: none;
+        margin-bottom: 30px;
     }
 
-    .sidebar a.active,
-    .sidebar a:hover {
-      background: linear-gradient(90deg, #6a11cb, #ff4ecd);
-      color: white;
+    .nav li {
+        margin-bottom: 15px;
     }
 
-    .sidebar .info-box {
-      background: #f3f2ff;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 14px;
-      margin-top: 40px;
+    .nav li a {
+        text-decoration: none;
+        color: #555;
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: background 0.3s;
+    }
+
+    .nav li a.active, .nav li a:hover {
+        background: linear-gradient(90deg, #6c63ff, #ff4da6);
+        color: #fff;
+    }
+
+    .about {
+        font-size: 14px;
+        color: #666;
+        background: #f1f1ff;
+        padding: 10px;
+        border-radius: 8px;
     }
 
     /* Conteúdo principal */
     .main {
-      margin-left: 270px;
-      padding: 30px;
-      flex: 1;
+        flex: 1;
+        padding: 40px;
     }
 
-    h1 {
-      color: #4a4ae6;
-      font-size: 26px;
-      margin-bottom: 10px;
+    .main h1 {
+        font-size: 32px;
+        color: #6c63ff;
+        margin-bottom: 10px;
     }
 
-    p.subtitle {
-      color: #555;
-      margin-bottom: 30px;
+    .main p {
+        font-size: 16px;
+        margin-bottom: 30px;
+        color: #555;
     }
 
-    /* Cards */
+    /* Grid de cards */
     .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
     }
 
     .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
-    .card:hover {
-      transform: scale(1.03);
-    }
-
-    .icon {
-      font-size: 28px;
-      margin-bottom: 10px;
+    .card .icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #6c63ff, #ff4da6);
+        border-radius: 10px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: bold;
     }
 
     .card h3 {
-      margin: 10px 0;
-      font-size: 18px;
-      color: #000;
+        font-size: 18px;
+        margin-bottom: 10px;
     }
 
     .card p {
-      font-size: 14px;
-      color: #555;
-      margin: 6px 0;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 18px;
-      border-radius: 10px;
-      border: none;
-      color: white;
-      background: linear-gradient(90deg, #6a11cb, #ff4ecd);
-      cursor: pointer;
-      font-size: 14px;
-      transition: opacity 0.3s;
+    .card .info {
+        font-size: 13px;
+        color: #777;
+        margin-bottom: 10px;
     }
 
-    .btn:hover {
-      opacity: 0.9;
+    .card button {
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #6c63ff, #ff4da6);
+        color: #fff;
+        cursor: pointer;
+        transition: opacity 0.3s;
     }
-  </style>
+
+    .card button:hover {
+        opacity: 0.8;
+    }
+</style>
 </head>
 <body>
-  <!-- Sidebar -->
- <div class="sidebar">
-  <h2>Café com Trans</h2>
-  <a href="index.html">Início</a>
-  <a href="podcast.html">Ouvir Podcast</a>
-  <a href="noticias.html">Notícias</a>
-  <a href="comunidade.html" class="active">Comunidade</a>
-  <a href="eventos.html">Eventos</a>
-  <a href="loja.html">Loja</a>
 
-  <div class="info-box">
-    Informações atualizadas e recursos para a comunidade trans no Brasil.
-  </div>
+<div class="sidebar">
+    <h2>Café com Trans</h2>
+    <ul class="nav">
+           <li><a href="index.html">Inicio</a></li>  
+           <li><a href="podcast.html">Ouvir Podcast</a></li>
+           <li><a href="https://cafecomtrans.wordpress.com">Notícias</a></li>
+           <li><a href="comunidade.html" class="active">Comunidade</a></li>
+           <li><a href="eventos.html">Eventos</a></li>        
+            <li><a href="loja.html">Loja</a></li>  
+    </ul>
+    <div class="about">
+        Informações atualizadas e recursos para a comunidade trans no Brasil.
+    </div>
 </div>
 
-
-  <!-- Conteúdo principal -->
-  <div class="main">
+<div class="main">
     <h1>Recursos da Comunidade</h1>
-    <p class="subtitle">Conecte-se com organizações, grupos de apoio e recursos essenciais para a comunidade trans</p>
+    <p>Conecte-se com organizações, grupos de apoio e recursos essenciais para a comunidade trans</p>
 
     <div class="cards">
-      <div class="card">
-        <div class="icon">🏠</div>
-        <h3>Casa Nem</h3>
-        <p>Casa de acolhida para pessoas LGBTI+ em situação de vulnerabilidade</p>
-        <p><strong>Contato:</strong> casanem.org.br</p>
-        <p><strong>Local:</strong> Rio de Janeiro, RJ</p>
-        <button class="btn">Saber Mais</button>
-      </div>
+        <div class="card">
+            <div class="icon">🏠</div>
+            <h3>Casa Nem</h3>
+            <p>Casa de acolhida para pessoas LGBTI+ em situação de vulnerabilidade</p>
+            <div class="info"><strong>Contato:</strong> casanem.org.br</div>
+            <div class="info"><strong>Local:</strong> Rio de Janeiro, RJ</div>
+            <button>Saber Mais</button>
+        </div>
 
-      <div class="card">
-        <div class="icon">🛡️</div>
-        <h3>ANTRA</h3>
-        <p>Associação Nacional de Travestis e Transexuais</p>
-        <p><strong>Contato:</strong> antrabrasil.org</p>
-        <p><strong>Local:</strong> Nacional</p>
-        <button class="btn">Saber Mais</button>
-      </div>
+        <div class="card">
+            <div class="icon">🛡️</div>
+            <h3>ANTRA</h3>
+            <p>Associação Nacional de Travestis e Transexuais</p>
+            <div class="info"><strong>Contato:</strong> antrabrasil.org</div>
+            <div class="info"><strong>Local:</strong> Nacional</div>
+            <button>Saber Mais</button>
+        </div>
 
-      <div class="card">
-        <div class="icon">❤️</div>
-        <h3>Centro de Referência LGBT</h3>
-        <p>Atendimento psicológico, jurídico e social</p>
-        <p><strong>Contato:</strong> Varia por cidade</p>
-        <p><strong>Local:</strong> Diversas cidades</p>
-        <button class="btn">Saber Mais</button>
-      </div>
+        <div class="card">
+            <div class="icon">❤️</div>
+            <h3>Centro de Referência LGBT</h3>
+            <p>Atendimento psicológico, jurídico e social</p>
+            <div class="info"><strong>Contato:</strong> Varia por cidade</div>
+            <div class="info"><strong>Local:</strong> Diversas cidades</div>
+            <button>Saber Mais</button>
+        </div>
 
-      <div class="card">
-        <div class="icon">👥</div>
-        <h3>Grupo TransRevolução</h3>
-        <p>Grupo de apoio e ativismo trans</p>
-        <p><strong>Contato:</strong> transrevolucao@gmail.com</p>
-        <p><strong>Local:</strong> São Paulo, SP</p>
-        <button class="btn">Saber Mais</button>
-      </div>
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Grupo TransRevolução</h3>
+            <p>Grupo de apoio e ativismo trans</p>
+            <div class="info"><strong>Contato:</strong> transrevolucao@gmail.com</div>
+            <div class="info"><strong>Local:</strong> São Paulo, SP</div>
+            <button>Saber Mais</button>
+        </div>
 
-      <div class="card">
-        <div class="icon">📞</div>
-        <h3>CVV - Centro de Valorização da Vida</h3>
-        <p>Apoio emocional e prevenção ao suicídio</p>
-        <p><strong>Contato:</strong> 188 (gratuito)</p>
-        <p><strong>Local:</strong> 24h - Nacional</p>
-        <button class="btn">Saber Mais</button>
-      </div>
+        <div class="card">
+            <div class="icon">🎧</div>
+            <h3>CVV - Centro de Valorização da Vida</h3>
+            <p>Apoio emocional e prevenção ao suicídio</p>
+            <div class="info"><strong>Contato:</strong> 188 (gratuito)</div>
+            <div class="info"><strong>Local:</strong> 24h - Nacional</div>
+            <button>Saber Mais</button>
+        </div>
 
-      <div class="card">
-        <div class="icon">💬</div>
-        <h3>Grupo Dignidade</h3>
-        <p>ONG de defesa dos direitos LGBTI+</p>
-        <p><strong>Contato:</strong> grupodignidade.org.br</p>
-        <p><strong>Local:</strong> Curitiba, PR</p>
-        <button class="btn">Saber Mais</button>
-      </div>
+        <div class="card">
+            <div class="icon">💬</div>
+            <h3>Grupo Dignidade</h3>
+            <p>ONG de defesa dos direitos LGBTI+</p>
+            <div class="info"><strong>Contato:</strong> grupodignidade.org.br</div>
+            <div class="info"><strong>Local:</strong> Curitiba, PR</div>
+            <button>Saber Mais</button>
+        </div>
     </div>
-  </div>
+</div>
+
 </body>
 </html>
