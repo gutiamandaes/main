@@ -5,6 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Café com Trans - Notícias</title>
 <link rel="stylesheet" href="style.css">
+<style>
+    #rss-feed {
+        list-style: none;
+        padding: 0;
+    }
+    #rss-feed li {
+        margin-bottom: 20px;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    #rss-feed a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #6c63ff;
+    }
+    #rss-feed a:hover {
+        text-decoration: underline;
+    }
+    #rss-feed small {
+        display: block;
+        color: #666;
+        margin-top: 5px;
+    }
+    #rss-feed p {
+        margin: 8px 0 0;
+        color: #444;
+    }
+</style>
 </head>
 <body>
 
@@ -45,11 +73,13 @@ async function carregarRSS() {
             if (index < 5) { // Mostra só os 5 mais recentes
                 const titulo = item.querySelector("title").textContent;
                 const link = item.querySelector("link").textContent;
-                const dataPub = item.querySelector("pubDate").textContent;
+                const dataPub = new Date(item.querySelector("pubDate").textContent).toLocaleDateString("pt-BR");
+                const descricao = item.querySelector("description") ? item.querySelector("description").textContent : "";
 
                 html += `<li>
-                    <a href="${link}" target="_blank">${titulo}</a><br>
-                    <small>${dataPub}</small>
+                    <a href="${link}" target="_blank">${titulo}</a>
+                    <small>Publicado em: ${dataPub}</small>
+                    <p>${descricao.substring(0, 150)}...</p>
                 </li>`;
             }
         });
