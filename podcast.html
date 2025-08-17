@@ -189,15 +189,6 @@
 <div class="main">
   <h1>Ouvir Podcast</h1>
 
-  <!-- PLAYER DO SPOTIFY -->
-  <iframe style="border-radius:12px" 
-    src="https://open.spotify.com/embed/show/1L8fqj2umqryEpcCYeJs8m?utm_source=generator" 
-    width="100%" height="152" frameBorder="0" 
-    allowfullscreen="" 
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-    loading="lazy">
-  </iframe>
-
   <p>Escute os episódios mais recentes do Café com Trans e acompanhe entrevistas, debates e histórias inspiradoras.</p>
   <h3>LISTEN TO THIS PODCAST</h3>
 
@@ -271,7 +262,23 @@
     </a></td>
   </tr>
 </table>
+ 
+    <!-- player abaixo da tabela -->
+  <div class="podcast-player">
+    <iframe src="https://open.spotify.com/embed/show/SEU_ID_AQUI"
+            frameborder="0"
+            allowtransparency="true"
+            allow="encrypted-media"></iframe>
+  </div>
 </div>
+
+<script>
+document.querySelectorAll('.nav a').forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add('active');
+  }
+});
+</script>
 
 </body>
 </html>
