@@ -1,72 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Café com Trans - Notícias</title>
-<link rel="stylesheet" href="style.css" />
-<style>
-  /* Estilos dos cards de notícias */
-  .noticias-container { padding: 20px; }
-  .noticias-container h1 { font-size: 2rem; margin-bottom: 16px; }
-
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  .card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform .2s ease;
-  }
-  .card:hover { transform: translateY(-4px); }
-
-  .card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .card-content {
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-  }
-
-  .card-content h3 {
-    font-size: 1.05rem;
-    line-height: 1.3;
-    color: #333;
-  }
-
-  .card-content .data {
-    font-size: .9rem;
-    color: #777;
-  }
-
-  .card-content .btn {
-    margin-top: auto;
-    display: inline-block;
-    padding: 10px 14px;
-    background: linear-gradient(90deg, #6c63ff, #ff4da6);
-    color: #fff;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  /* Estado de carregamento/erro */
-  #rss-status { color: #666; margin: 10px 0 20px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café com Trans - Notícias</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 18px;
+      margin: 8px 0;
+    }
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+    .card button {
+      margin-top: auto;
+      padding: 10px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .card button:hover {
+      background: #ff85c1;
+    }
+  </style>
 </head>
 <body>
 
@@ -75,7 +57,7 @@
   <ul class="nav">
     <li><a href="index.html">Início</a></li>
     <li><a href="podcast.html">Ouvir Podcast</a></li>
-    <li><a href="noticias.html" class="active">Notícias</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
     <li><a href="comunidade.html">Comunidade</a></li>
     <li><a href="eventos.html">Eventos</a></li>
     <li><a href="loja.html">Loja</a></li>
@@ -86,103 +68,42 @@
 </div>
 
 <div class="main">
-  <div class="noticias-container">
-    <h1>Últimas Notícias</h1>
-    <div id="rss-status">Carregando…</div>
-    <div class="cards" id="rss-cards"></div>
-  </div>
+  <h1>Últimas Notícias</h1>
+  <div id="news" class="cards"></div>
 </div>
 
 <script>
-async function carregarRSS() {
-  const FEED_URL = "https://cafecomtrans.wordpress.com/feed/";
-  const PROXY = "https://api.allorigins.win/get?url=" + encodeURIComponent(FEED_URL);
+const rssUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://cafecomtrans.blogspot.com/feeds/posts/default?alt=rss";
 
-  const placeholder = "https://via.placeholder.com/800x450?text=Caf%C3%A9+com+Trans";
+fetch(rssUrl)
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById("news");
 
-  const getText = (el) => (el ? el.textContent : "");
-
-  const getFirstImageFromHTML = (html) => {
-    if (!html) return null;
-    const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
-    return match ? match[1] : null;
-  };
-
-  const getImageFromItem = (item) => {
-    // 1) content:encoded
-    const contentNode = item.querySelector("content\\:encoded");
-    const contentHTML = getText(contentNode);
-    let img = getFirstImageFromHTML(contentHTML);
-    if (img) return img;
-
-    // 2) media:content url
-    const media = item.querySelector("media\\:content, content"); // alguns feeds usam <media:content>
-    if (media && media.getAttribute) {
-      const murl = media.getAttribute("url");
-      if (murl) return murl;
-    }
-
-    // 3) enclosure
-    const enclosure = item.querySelector("enclosure");
-    if (enclosure && enclosure.getAttribute) {
-      const eurl = enclosure.getAttribute("url");
-      if (eurl) return eurl;
-    }
-
-    return placeholder;
-  };
-
-  try {
-    const res = await fetch(PROXY);
-    if (!res.ok) throw new Error("Falha ao buscar o feed.");
-    const data = await res.json();
-
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, "text/xml");
-    const items = xml.querySelectorAll("item");
-
-    if (!items || items.length === 0) {
-      document.getElementById("rss-status").textContent = "Nenhum post encontrado.";
+    if (!data.items || data.items.length === 0) {
+      container.innerHTML = "<p>Nenhum post encontrado.</p>";
       return;
     }
 
-    let html = "";
-    items.forEach((item, idx) => {
-      if (idx >= 6) return; // exibe 6 posts
+    data.items.slice(0, 6).forEach(post => {
+      // Usa imagem do post, se existir
+      let img = post.thumbnail || "https://via.placeholder.com/300x200?text=Café+com+Trans";
 
-      const titulo = getText(item.querySelector("title")) || "Sem título";
-      const link = getText(item.querySelector("link")) || "#";
-      const pubDateRaw = getText(item.querySelector("pubDate"));
-      let dataPub = "";
-      try {
-        dataPub = pubDateRaw ? new Date(pubDateRaw).toLocaleDateString("pt-BR") : "";
-      } catch(e) {
-        dataPub = pubDateRaw || "";
-      }
-
-      const imgSrc = getImageFromItem(item);
-
-      html += `
-        <div class="card">
-          <img src="${imgSrc}" alt="${titulo.replace(/"/g, '&quot;')}" loading="lazy" />
-          <div class="card-content">
-            <h3>${titulo}</h3>
-            <p class="data">${dataPub}</p>
-            <a class="btn" href="${link}" target="_blank" rel="noopener">Ler mais</a>
-          </div>
-        </div>
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${img}" alt="Notícia">
+        <h3>${post.title}</h3>
+        <p>${post.description.substring(0, 100)}...</p>
+        <button onclick="window.open('${post.link}', '_blank')">Ler mais</button>
       `;
+      container.appendChild(card);
     });
-
-    document.getElementById("rss-cards").innerHTML = html;
-    document.getElementById("rss-status").textContent = "";
-  } catch (err) {
-    console.error(err);
-    document.getElementById("rss-status").textContent = "Erro ao carregar notícias.";
-  }
-}
-
-carregarRSS();
+  })
+  .catch(err => {
+    document.getElementById("news").innerHTML = "<p>Erro ao carregar notícias.</p>";
+    console.error("Erro no RSS:", err);
+  });
 </script>
 
 </body>
