@@ -3,268 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Café com Trans</title>
+<title>Onde ouvir - Café com Trans</title>
 <style>
-    /* Reset básico */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+    background: #f9f9f9;
+  }
 
-    body {
-        display: flex;
-        min-height: 100vh;
-        background-color: #f8f9ff;
-        color: #333;
-    }
+  h1 {
+    margin-bottom: 20px;
+  }
 
-    /* Menu lateral */
-    .sidebar {
-        width: 220px;
-        background-color: #fff;
-        border-right: 1px solid #e0e0e0;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-    }
+  .podcast-grid {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
 
-    .sidebar h2 {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
+  .podcast-grid td {
+    padding: 15px;
+  }
 
-    .nav {
-        list-style: none;
-        margin-bottom: 30px;
-    }
+  .podcast-grid img {
+    width: 60px;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px;
+  }
 
-    .nav li {
-        margin-bottom: 15px;
-    }
-
-    .nav li a {
-        text-decoration: none;
-        color: #555;
-        display: flex;
-        align-items: center;
-        padding: 8px 12px;
-        border-radius: 8px;
-        transition: background 0.3s;
-    }
-
-    .nav li a.active, .nav li a:hover {
-        background: linear-gradient(90deg, #6c63ff, #ff4da6);
-        color: #fff;
-    }
-
-    .about {
-        font-size: 14px;
-        color: #666;
-        background: #f1f1ff;
-        padding: 10px;
-        border-radius: 8px;
-    }
-
-    /* Conteúdo principal */
-    .main {
-        flex: 1;
-        padding: 40px;
-    }
-
-    .main h1 {
-        font-size: 32px;
-        color: #6c63ff;
-        margin-bottom: 10px;
-    }
-
-    .main p {
-        font-size: 16px;
-        margin-bottom: 30px;
-        color: #555;
-    }
-
-    /* Grid de cards */
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
-
-    .card {
-        background-color: #fff;
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .card .icon {
-        width: 40px;
-        height: 40px;
-        background: linear-gradient(135deg, #6c63ff, #ff4da6);
-        border-radius: 10px;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-weight: bold;
-    }
-
-    .card h3 {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-    .card p {
-        font-size: 14px;
-        color: #555;
-        margin-bottom: 10px;
-    }
-
-    .card .info {
-        font-size: 13px;
-        color: #777;
-        margin-bottom: 10px;
-    }
-
-    .card button {
-        border: none;
-        padding: 10px;
-        border-radius: 8px;
-        background: linear-gradient(90deg, #6c63ff, #ff4da6);
-        color: #fff;
-        cursor: pointer;
-        transition: opacity 0.3s;
-    }
-
-    .card button:hover {
-        opacity: 0.8;
-    }
-           /* Imagens da seção de podcasts */
-    .podcast-grid img {
-        width: 40px;      /* tamanho inicial */
-        height: auto;      /* mantém proporção */
-        margin: 10px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-        border-radius: 8px;
-    }
-
-    .podcast-grid img:hover {
-        transform: scale(1.2); /* aumenta ao passar o mouse */
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    /* opcional: deixar as logos em grade bonitinha */
-    .podcast-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        align-items: center;
-    }
+  .podcast-grid img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
 </style>
 </head>
 <body>
 
-<div class="sidebar">
-    <h2>Café com Trans</h2>
-    <ul class="nav">
-           <li><a href="index.html">Inicio</a></li>  
-           <li><a href="podcast.html"class="active">Ouvir Podcast</a></li>
-           <li><a href="https://cafecomtrans.wordpress.com">Notícias</a></li>
-           <li><a href="comunidade.html" >Comunidade</a></li>
-           <li><a href="eventos.html">Eventos</a></li>        
-            <li><a href="loja.html">Loja</a></li>  
-    </ul>
-    <div class="about">
-        Informações atualizadas e recursos para a comunidade trans no Brasil.
-    </div>
-</div>
-
-<div class="main">
- </aside>
-  <main>
-    <h1>Ouvir Podcast</h1>
-    <p>Escute os episódios mais recentes do Café com Trans e acompanhe entrevistas, debates e histórias inspiradoras.</p>
-    <h3>LISTEN TO THIS PODCAST</h3>
+<h1>Onde ouvir o Café com Trans</h1>
 
 <table class="podcast-grid">
   <tr>
-    <td><a href="https://podcasts.apple.com/es/podcast/caf%C3%A9-com-trans-diva-trans/id1522240006?ct=rephonic&uo=4" target="_blank">
-      <img src="apple.jpg" alt="Apple Podcasts">
-    </a></td>
-    <td><a href="https://open.spotify.com/show/1L8fqj2umqryEpcCYeJs8m" target="_blank">
-      <img src="spotify.jpg" alt="Spotify">
-    </a></td>
-    <td><a href="https://podcastaddict.com/podcast/cafe-com-trans-diva-trans/4502100" target="_blank">
-      <img src="podaddict.jpg" alt="Podcast Addict">
-    </a></td>
-    <td><a href="https://ivy.fm/podcast/cafe-com-sociologia-155367" target="_blank">
-      <img src="ivy.jpg" alt="Ivy FM">
-    </a></td>
-    <td><a href="https://music.amazon.es/podcasts/e679db55-0c7c-4249-9709-7d8cf20c697c/caf%C3%A9-com-trans---diva-trans" target="_blank">
-      <img src="amazon.jpg" alt="Amazon Music">
-    </a></td>
+    <td><a href="#"><img src="apple.jpg" alt="Apple Podcasts"></a></td>
+    <td><a href="#"><img src="spotify.jpg" alt="Spotify"></a></td>
+    <td><a href="#"><img src="podaddict.jpg" alt="Podcast Addict"></a></td>
+    <td><a href="#"><img src="ivy.jpg" alt="Ivy FM"></a></td>
+    <td><a href="#"><img src="amazon.jpg" alt="Amazon Music"></a></td>
+    <td><a href="#"><img src="deezer.jpg" alt="Deezer"></a></td>
+    <td><a href="#"><img src="youtube-music.jpg" alt="YouTube Music"></a></td>
   </tr>
   <tr>
-    <td><a href="https://pocketcasts.com/podcasts/38dcac10-f97d-0139-d507-0acc26574db2" target="_blank">
-      <img src="pocketcasts.jpg" alt="Pocket Casts">
-    </a></td>
-    <td><a href="https://goodpods.app.link/HgUWFMZCOLb" target="_blank">
-      <img src="goodpods.jpg" alt="Goodpods">
-    </a></td>
-    <td><a href="https://castbox.fm/channel/id6340550?country=br" target="_blank">
-      <img src="castbox.jpg" alt="CastBox">
-    </a></td>
-    <td><a href="https://music.youtube.com/playlist?list=PLuAl7puBMM42jqzZQ2fCtW4RJXS6lR9qd" target="_blank">
-      <img src="youtube-music.jpg" alt="YouTube Music">
-    </a></td>
-    <td><a href="https://anchor.fm/s/2db555cc/podcast/rss" target="_blank">
-      <img src="https://miro.medium.com/v2/resize:fit:1080/1*sIouhcf1APOHW_W2tj5lmg.jpeg" alt="RSS Feed">
-    </a></td>
+    <td><a href="#"><img src="pocketcasts.jpg" alt="Pocket Casts"></a></td>
+    <td><a href="#"><img src="goodpods.jpg" alt="Goodpods"></a></td>
+    <td><a href="#"><img src="castbox.jpg" alt="CastBox"></a></td>
+    <td><a href="#"><img src="rss.jpg" alt="RSS Feed"></a></td>
+    <td><a href="#"><img src="podbean.jpg" alt="Podbean"></a></td>
+    <td><a href="#"><img src="iheart.jpg" alt="iHeart Radio"></a></td>
+    <td><a href="#"><img src="overcast.jpg" alt="Overcast"></a></td>
   </tr>
   <tr>
-    <td><a href="https://www.podbean.com/podcast-detail/x7utj-101ab5/Caf%C3%A9-com-Trans---Diva-Trans-Podcast" target="_blank">
-      <img src="https://play-lh.googleusercontent.com/xDnFpObVkPhd0EDhN4W5bW1-5pUzKw7XuFs9QMLS66pow_lMGCDvg1XK1pFAWb19AxA" alt="Podbean">
-    </a></td>
-    <td><a href="https://podcastrepublic.net/podcast/1522240006" target="_blank">
-      <img src="https://play-lh.googleusercontent.com/o5CYHp9mbh3_QWIuqSeLp5g6sx7xrs824U-rWLaL70r7eqQMPzQN7QIM6rIYsYdrM2TI" alt="Podcast Republic">
-    </a></td>
-    <td><a href="https://www.deezer.com/br/show/1002034921" target="_blank">
-      <img src="deezer.jpg" alt="Deezer">
-    </a></td>
-    <td><a href="https://www.iheart.com/podcast/269-cafe-com-trans-diva-trans-69157550/" target="_blank">
-      <img src="iheart.jpg" alt="iHeart Podcasts">
-    </a></td>
-    <td><a href="https://overcast.fm/itunes1522240006/diva-trans-podcastchy" target="_blank">
-      <img src="overcast.jpg" alt="Overcast">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="https://radiopublic.com/diva-trans-podcastchy-6nnOP1" target="_blank">
-      <img src="radiopublic.jpg" alt="RadioPublic">
-    </a></td>
-    <td><a href="https://tunein.com/podcasts/Comedy/Caf%c3%a9-com-Trans-p1375774/" target="_blank">
-      <img src="tunein.jpg" alt="TuneIn">
-    </a></td>
-    <td><a href="https://podimo.com/es/shows/cafe-com-trans-diva-trans" target="_blank">
-      <img src="podimo.jpg" alt="Podimo">
-    </a></td>
-    <td><a href="https://player.fm/series/cafe-com-trans-diva-trans" target="_blank">
-      <img src="playerfm.jpg" alt="Player FM">
-    </a></td>
-    <td><a href="https://www.podengine.ai/podcasts/cafe-com-trans-diva-trans" target="_blank">
-      <img src="podengine.jpg" alt="Podengine">
-    </a></td>
+    <td><a href="#"><img src="stitcher.jpg" alt="Stitcher"></a></td>
+    <td><a href="#"><img src="tunein.jpg" alt="TuneIn"></a></td>
+    <td><a href="#"><img src="radio-public.jpg" alt="Radio Public"></a></td>
+    <td><a href="#"><img src="playerfm.jpg" alt="Player FM"></a></td>
+    <td><a href="#"><img src="breaker.jpg" alt="Breaker"></a></td>
+    <td><a href="#"><img src="listen-notes.jpg" alt="Listen Notes"></a></td>
+    <td><a href="#"><img src="google-podcasts.jpg" alt="Google Podcasts"></a></td>
   </tr>
 </table>
-    </div>
-</div>
 
 </body>
 </html>
