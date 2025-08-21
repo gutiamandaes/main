@@ -4,14 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Café com Trans</title>
-       <!-- Script de redirecionamento primeiro -->
-  <script>
-    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+       /*script de redirecionamento         
+       <script>
+  const currentHost = window.location.hostname;
+
+  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    // Se for celular e não estiver no domínio mobile
+    if (currentHost !== "m.cafecomtrans.com.br") {
       window.location.href = "https://m.cafecomtrans.com.br";
-    } else {
-      window.location.href = "https://gutiamandaes.github.io/main/index.html";
     }
-  </script>
+  } else {
+    // Se for desktop e não estiver no domínio principal
+    if (currentHost !== "www.cafecomtrans.com.br") {
+      window.location.href = "https://www.cafecomtrans.com.br";
+    }
+  }
+</script>
     <style>
     /* Reset básico */
     * {
