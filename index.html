@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Café com Trans</title>
-       /*script de redirecionamento         
-       <script>
+        <!-- Script Direciona Mobile  -->
+<script>
   const currentHost = window.location.hostname;
 
   if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
     // Se for celular e não estiver no domínio mobile
-    if (currentHost !== "m.cafecomtrans.com") {
-      window.location.href = "https://m.cafecomtrans.com.br";
+    if (currentHost !== "https://mobile.cafecomtrans.workers.dev") {
+      window.location.href = "https://mobile.cafecomtrans.workers.dev";
     }
   } else {
     // Se for desktop e não estiver no domínio principal
