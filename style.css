@@ -164,6 +164,15 @@ body {
 }
 
 /* =============================
+   PLAYER DO PODCAST (Spotify)
+============================= */
+.podcast-player iframe {
+    width: 340px;   /* ajusta aqui a largura */
+    height: 152px;  /* altura recomendada para embed de podcast */
+    border-radius: 12px;
+}
+
+/* =============================
    RESPONSIVIDADE
 ============================= */
 @media (max-width: 768px) {
