@@ -14,7 +14,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Layout base: sidebar à esquerda, conteúdo à direita */
+/* Layout base */
 body {
     display: flex;
     min-height: 100vh;
@@ -96,23 +96,6 @@ body {
     color: #555;
 }
 
-/* ===== Ajuste do logotipo ===== */
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.logo-container img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-/* ============================== */
-
 /* Grid de cards */
 .cards {
     display: grid;
@@ -128,6 +111,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: left;
 }
 
 .card .icon {
@@ -174,6 +158,20 @@ body {
     opacity: 0.8;
 }
 
+/* Card especial do logotipo */
+.card.logo-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card.logo-card img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    object-fit: contain;
+}
+
 /* Rodapé */
 footer {
     text-align: center;
@@ -204,17 +202,15 @@ footer {
 
 <div class="content">
     <div class="main">
-
-        <!-- 🔥 Novo bloco de logotipo -->
-        <div class="logo-container">
-            <img src="cafecomtrans.jpg" alt="Logo Café com Trans">
-        </div>
-        <!-- 🔥 Fim do bloco de logotipo -->
-
         <h1>Página do Podcast Café com Trans BR</h1>
         <p>Conecte-se com organizações, grupos de apoio e recursos essenciais para a comunidade trans</p>
 
         <div class="cards">
+            <!-- 💜 Card com o logotipo -->
+            <div class="card logo-card">
+                <img src="cafecomtrans.jpg" alt="Logo Café com Trans">
+            </div>
+
             <div class="card">
                 <div class="icon">🏠</div>
                 <h3>Casa Nem</h3>
