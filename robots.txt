@@ -1,1 +1,3 @@
-
+User-agent: *
+Allow: /
+Sitemap: https://www.cafecomtrans.com.br/sitemap.xml
