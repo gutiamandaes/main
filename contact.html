@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Amanda Gutierrez</title>
+
+<style>
+    body {
+        margin: 0;
+        overflow-x: hidden; /* Evita barra de rolagem horizontal por causa da animação */
+        background: black;
+        font-family: 'Courier New', monospace;
+        color: #00ff9f;
+    }
+
+    /* MENU */
+    nav {
+        position: fixed;
+        top: 20px;
+        right: 40px;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 5px 15px;
+        border-radius: 5px;
+    }
+
+    nav a {
+        color: #00ff9f;
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 16px;
+        letter-spacing: 2px;
+        transition: 0.3s;
+    }
+
+    nav a:hover { text-shadow: 0 0 10px #00ff9f; }
+
+    /* MATRIX BACKGROUND */
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    /* TERMINAL CONTAINER */
+    .terminal-container {
+        max-width: 800px;
+        margin: 80px auto;
+        background: rgba(0, 0, 0, 0.9);
+        border: 1px solid #00ff9f;
+        box-shadow: 0 0 15px rgba(0, 255, 159, 0.3);
+        padding: 25px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .terminal-header {
+        border-bottom: 1px solid #00ff9f;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+    }
+
+    .terminal-line { margin-bottom: 20px; }
+
+    .command { color: #fff; font-weight: bold; display: block; margin-bottom: 5px; }
+
+    .response { padding-left: 15px; color: #e0e0e0; line-height: 1.6; }
+
+    .response a {
+        color: #00ff9f;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+
+    .response a:hover { text-decoration: underline; background: rgba(0, 255, 159, 0.1); }
+
+    .link-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 18px;
+        background: #00ff9f;
+        animation: blink 1s infinite;
+        vertical-align: middle;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* --- NOVA PARTE: ANIMAÇÃO DE ÍCONES (MARQUEE) --- */
+    .social-marquee {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px dashed #00ff9f;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .marquee-content {
+        display: inline-block;
+        animation: scroll-left 35s linear infinite;
+    }
+
+    .marquee-item {
+        display: inline-block;
+        margin-right: 40px;
+        color: #00ff9f;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: 0.3s;
+    }
+
+    .marquee-item:hover {
+        text-shadow: 0 0 15px #00ff9f;
+        transform: scale(1.1);
+    }
+
+    @keyframes scroll-left {
+        from { transform: translateX(100%); }
+        to { transform: translateX(-100%); }
+    }
+
+    /* Pausa a animação ao passar o mouse */
+    .social-marquee:hover .marquee-content {
+        animation-play-state: paused;
+    }
+
+    @media (max-width: 600px) {
+        .link-grid { grid-template-columns: 1fr; }
+        nav { right: 0; width: 100%; text-align: center; top: 0; border-radius: 0; padding: 10px 0; }
+        .terminal-container { margin: 60px 10px; }
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">HOME</a>
+    <a href="gallery.html">GALLERY</a>
+    <a href="contact.html">CONTACT</a>
+</nav>
+
+<canvas id="matrix"></canvas>
+
+<div class="terminal-container">
+    <div class="terminal-header">
+        <span>SESSION_ID: AMANDA_GUTI_CONTACT</span>
+        <span>LOCATION: VALENCIA/SPAIN</span>
+    </div>
+
+    <div class="terminal-line">
+        <span class="command">amanda@cyber:~$ whoami</span>
+        <div class="response">
+            Amanda Gutierrez<br>
+            LinkedIn: <a href="https://linkedin.com/in/gutiamanda/?" target="_blank">linkedin.com/in/gutiamanda</a><br>
+            Localização: Valencia, Spain
+        </div>
+    </div>
+
+    <div class="terminal-line">
+        <span class="command">amanda@cyber:~$ ls -la /external_links/</span>
+        <div class="response link-grid">
+            <div>• <a href="https://gutimanda.wordpress.com/" target="_blank">Blog Oficial Amanda Gutierrez</a></div>
+            <div>• <a href="https://sites.google.com/view/gutiamanda" target="_blank">Google Site</a></div>
+            <div>• <a href="https://amanda.free.nf/" target="_blank">Site Amanda Gutierrez</a></div>
+            <div>• <a href="https://g.dev/gutiamanda" target="_blank">Dev Site (Google)</a></div>
+            <div>• <a href="https://www.instagram.com/divatrans_/" target="_blank">Instagram Principal</a></div>
+            <div>• <a href="https://www.instagram.com/i.m.amanda" target="_blank">Instagram Secundário</a></div>
+            <div>• <a href="https://x.com/divatrans_" target="_blank">Twitter (X)</a></div>
+            <div>• <a href="#" target="_blank">Privacy</a></div>
+            <div>• <a href="#" target="_blank">Em Breve</a></div>
+            <div>• <a href="https://cafecomtrans.com.br" target="_blank">Café com Trans (BR)</a></div>
+            <div>• <a href="https://cafecomtrans.com" target="_blank">Café com Trans (International)</a></div>
+        </div>
+    </div>
+
+    <div class="terminal-line">
+        <span class="command">amanda@cyber:~$ status --check</span>
+        <div class="response">
+            Aguardando interação do usuário... <span class="cursor"></span>
+        </div>
+    </div>
+
+    <div class="social-marquee">
+        <div class="marquee-content">
+            <a href="https://www.instagram.com/divatrans_/" class="marquee-item">[ INSTAGRAM ]</a>
+            <a href="https://linkedin.com/in/gutiamanda/" class="marquee-item">[ LINKEDIN ]</a>
+            <a href="https://x.com/divatrans_" class="marquee-item">[ TWITTER/X ]</a>
+            <a href="https://gutimanda.wordpress.com/" class="marquee-item">[ BLOG ]</a>
+            <a href="https://cafecomtrans.com.br" class="marquee-item">[ CAFÉ COM TRANS ]</a>
+            <a href="#" class="marquee-item">[ PRIVACY ]</a>
+            <a href="#" class="marquee-item">[ Em Breve ]</a>
+            <a href="https://www.instagram.com/divatrans_/" class="marquee-item">[ INSTAGRAM ]</a>
+            <a href="https://linkedin.com/in/gutiamanda/" class="marquee-item">[ LINKEDIN ]</a>
+            <a href="https://x.com/divatrans_" class="marquee-item">[ TWITTER/X ]</a>
+            <a href="https://gutimanda.wordpress.com/" class="marquee-item">[ BLOG ]</a>
+            <a href="https://cafecomtrans.com.br" class="marquee-item">[ CAFÉ COM TRANS ]</a>
+            <a href="https://www.instagram.com/divatrans_/" class="marquee-item">[ INSTAGRAM ]</a>
+            <a href="https://linkedin.com/in/gutiamanda/" class="marquee-item">[ LINKEDIN ]</a>
+        </div>
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+function initMatrix() {
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    const chars = "01<>/{}[]$#@!*&^%+=-~|";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00ff9f";
+        ctx.font = fontSize + "px monospace";
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 35);
+}
+
+initMatrix();
+window.onresize = () => {
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+};
+</script>
+
+</body>
+</html>

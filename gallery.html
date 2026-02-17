@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | Amanda Gutierrez</title>
+
+<style>
+    body {
+        margin: 0;
+        overflow-x: hidden;
+        background: black;
+        font-family: 'Courier New', monospace;
+        color: #00ff9f;
+    }
+
+    /* MENU */
+    nav {
+        position: fixed;
+        top: 20px;
+        right: 40px;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 5px 15px;
+        border-radius: 5px;
+    }
+
+    nav a {
+        color: #00ff9f;
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 16px;
+        letter-spacing: 2px;
+        transition: 0.3s;
+    }
+
+    nav a:hover { text-shadow: 0 0 10px #00ff9f; }
+
+    /* MATRIX BACKGROUND */
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    /* GALLERY CONTAINER */
+    .container {
+        max-width: 1100px;
+        margin: 100px auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .terminal-title {
+        text-align: left;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        border-left: 5px solid #00ff9f;
+        padding-left: 15px;
+        text-shadow: 0 0 10px #00ff9f;
+    }
+
+    .welcome-text {
+        margin-bottom: 40px;
+        font-style: italic;
+        opacity: 0.8;
+    }
+
+    /* GRID DE FOTOS */
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .photo-item {
+        position: relative;
+        border: 1px solid #00ff9f;
+        background: rgba(0, 0, 0, 0.8);
+        overflow: hidden;
+        transition: 0.4s;
+        height: 350px;
+    }
+
+    .photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        transition: 0.5s;
+    }
+
+    .photo-item:hover {
+        box-shadow: 0 0 20px #00ff9f;
+        transform: scale(1.02);
+    }
+
+    .photo-item:hover img {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    /* LEGENDA HACKER */
+    .photo-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 255, 159, 0.9);
+        color: black;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 0.8rem;
+        transform: translateY(100%);
+        transition: 0.3s;
+    }
+
+    .photo-item:hover .photo-caption {
+        transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+        nav { right: 0; width: 100%; text-align: center; top: 0; border-radius: 0; }
+        .container { margin-top: 80px; }
+        .photo-item { height: 450px; }
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">HOME</a>
+    <a href="gallery.html">GALLERY</a>
+    <a href="contact.html">CONTACT</a>
+</nav>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+    <div class="terminal-title">
+        amanda@cyber:~/gallery$ init --view-images
+    </div>
+    
+    <p class="welcome-text">"Welcome to my world, where every image whispers a fragment of my story in Spain."</p>
+
+    <div class="photo-grid">
+        <div class="photo-item">
+            <img src="https://amanda.free.nf/gallery_gen/da0407f631462e56f99fc378922d4343_fit.png" alt="Amanda Gutierrez">
+            <div class="photo-caption">IMG_001.RAW // AMANDA GUTIERREZ</div>
+        </div>
+
+        <div class="photo-item">
+            <img src="https://amanda.free.nf/gallery_gen/1998c7e511c1e6bec32d22eaae3bb1d2_fit.png" alt="Amanda G">
+            <div class="photo-caption">IMG_002.RAW // AMANDA G</div>
+        </div>
+
+        <div class="photo-item">
+            <img src="https://amanda.free.nf/gallery_gen/e4105c21170aa3ef4c69ecb50f53e45c_fit.png" alt="Amanda Gutierrez">
+            <div class="photo-caption">IMG_003.RAW // AMANDA GUTIERREZ</div>
+        </div>
+
+        <div class="photo-item">
+            <img src="https://amanda.free.nf/gallery_gen/4e702efcb32daf57fa5c85a0890838be_fit.png" alt="Amanda Gutierrez">
+            <div class="photo-caption">IMG_004.RAW // AMANDA GUTIERREZ</div>
+        </div>
+
+        <div class="photo-item">
+            <img src="https://amanda.free.nf/gallery_gen/a266731534d22bf0523425f111b078db_fit.png" alt="Amanda Gutierrez">
+            <div class="photo-caption">IMG_005.RAW // AMANDA GUTIERREZ</div>
+        </div>
+
+        <div class="photo-item">
+            <img src="https://amanda.free.nf/gallery_gen/d66ee6934fd1fd467953f6c8ecf4b80f_fit.png" alt="Amanda Gutierrez">
+            <div class="photo-caption">IMG_006.RAW // AMANDA GUTIERREZ</div>
+        </div>
+
+        <div class="photo-item">
+            <img src="https://amanda.free.nf/gallery_gen/1f172fa3c32e25c2b9aef0bb6115f8d8_fit.png" alt="Amanda Gutierrez">
+            <div class="photo-caption">IMG_007.RAW // AMANDA GUTIERREZ</div>
+        </div>
+
+        <div class="photo-item">
+            <img src="https://amanda.free.nf/gallery_gen/abd8de96d1333a9ea1d5b35c6d015597_fit.png" alt="Amanda Gutierrez">
+            <div class="photo-caption">IMG_008.RAW // AMANDA GUTIERREZ</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+function initMatrix() {
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    const chars = "01<>/{}[]$#@!*&^%+=-~|";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00ff9f";
+        ctx.font = fontSize + "px monospace";
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 35);
+}
+
+initMatrix();
+window.onresize = () => {
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+};
+</script>
+
+</body>
+</html>
