@@ -21,17 +21,11 @@
             border: 1px solid rgba(0, 255, 159, 0.2);
         }
 
-        .matrix-text {
-            color: #00ff9f;
-            text-shadow: 0 0 8px rgba(0, 255, 159, 0.5);
-        }
-
         .command-pink {
             color: #ff00ff;
             text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
         }
 
-        /* Cursor piscante para o efeito de digitação */
         .cursor {
             display: inline-block;
             width: 10px;
@@ -74,7 +68,8 @@
                     <span class="command-pink">whoami</span>
                 </div>
                 
-                <div class="mb-10 min-h-[120px]"> <h1 class="text-3xl md:text-5xl font-bold text-white mb-2">
+                <div class="mb-10 min-h-[120px]"> 
+                    <h1 class="text-3xl md:text-5xl font-bold text-white mb-2">
                         Amanda Gutierrez
                     </h1>
                     <div class="text-gray-400 text-sm md:text-xl flex items-center">
@@ -158,11 +153,28 @@
             if (isDeleting) {
                 textElement.textContent = currentProf.substring(0, charIndex - 1);
                 charIndex--;
-                typeSpeed = 50; // Apaga mais rápido
+                typeSpeed = 50;
             } else {
                 textElement.textContent = currentProf.substring(0, charIndex + 1);
                 charIndex++;
-                typeSpeed = 150; // Escreve em velocidade normal
+                typeSpeed = 150;
             }
 
-            if (!isDeleting && charIndex === currentProf.length)
+            if (!isDeleting && charIndex === currentProf.length) {
+                isDeleting = true;
+                typeSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                profIndex = (profIndex + 1) % professions.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Inicia a digitação após o carregamento
+        window.onload = type;
+    </script>
+
+</body>
+</html>
