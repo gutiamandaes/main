@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Amanda Gutierrez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow-x: hidden;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Fundo Matrix */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Efeito de Vidro */
+        .glass {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 255, 159, 0.2);
+        }
+
+        .command-pink {
+            color: #ff00ff;
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: #00ff9f;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Estilo Marquee */
+        .social-marquee {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(0, 255, 159, 0.3);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scroll-left 30s linear infinite;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            margin-right: 40px;
+            color: #00ff9f;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .marquee-item:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        @keyframes scroll-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        .social-marquee:hover .marquee-content { animation-play-state: paused; }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix"></canvas>
+
+    <main class="relative z-10 w-full min-h-screen flex flex-col items-center justify-center p-4">
+        
+        <div class="glass w-full max-w-3xl rounded-lg overflow-hidden shadow-2xl">
+            
+            <div class="bg-[#1a1a1a] p-3 flex items-center border-b border-gray-800">
+                <div class="flex space-x-2">
+                    <a href="index.html" class="w-3 h-3 rounded-full bg-red-500 hover:scale-110 transition-transform"></a>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div class="flex-1 text-center mr-8">
+                    <span class="text-xs text-gray-500 font-mono">amanda@cyber:~/contact_links</span>
+                </div>
+            </div>
+
+            <div class="p-6 md:p-10 font-mono">
+                
+                <div class="mb-8">
+                    <span class="text-[#00ff9f]">$</span> <span class="command-pink">whoami</span>
+                    <div class="mt-2 ml-4 text-gray-300">
+                        <p class="text-xl font-bold text-white">Amanda Gutierrez</p>
+                        <p class="text-sm text-gray-500 italic">Location: Valencia, Spain</p>
+                        <p class="mt-2">LinkedIn: <a href="https://linkedin.com/in/gutiamanda/" target="_blank" class="text-[#00ff9f] hover:underline">linkedin.com/in/gutiamanda</a></p>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <span class="text-[#00ff9f]">$</span> <span class="command-pink">ls -la /external_links/</span>
+                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 ml-4">
+                        <a href="https://gutimanda.wordpress.com/" target="_blank" class="text-sm text-gray-300 hover:text-[#00ff9f]">● Blog Oficial</a>
+                        <a href="https://sites.google.com/view/gutiamanda" target="_blank" class="text-sm text-gray-300 hover:text-[#00ff9f]">● Google Site</a>
+                        <a href="https://amanda.free.nf/" target="_blank" class="text-sm text-gray-300 hover:text-[#00ff9f]">● Personal Site</a>
+                        <a href="https://g.dev/gutiamanda" target="_blank" class="text-sm text-gray-300 hover:text-[#00ff9f]">● Dev Site (Google)</a>
+                        <a href="https://www.instagram.com/divatrans_/" target="_blank" class="text-sm text-gray-300 hover:text-[#00ff9f]">● Instagram Principal</a>
+                        <a href="https://www.instagram.com/i.m.amanda" target="_blank" class="text-sm text-gray-300 hover:text-[#00ff9f]">● Instagram Secundário</a>
+                        <a href="https://x.com/divatrans_" target="_blank" class="text-sm text-gray-300 hover:text-[#00ff9f]">● Twitter (X)</a>
+                        <a href="https://cafecomtrans.com.br" target="_blank" class="text-sm text-gray-300 hover:text-[#00ff9f]">● Café com Trans (BR)</a>
+                        <a href="https://cafecomtrans.com" target="_blank" class="text-sm text-gray-300 hover:text-[#00ff9f]">● Café com Trans (Int)</a>
+                        <a href="#" class="text-sm text-gray-600">● Privacy (Soon)</a>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <span class="text-[#00ff9f]">$</span> <span class="command-pink">status --check</span>
+                    <div class="mt-2 ml-4 text-gray-400 text-sm">
+                        Aguardando interação... <span class="cursor"></span>
+                    </div>
+                </div>
+
+                <div class="social-marquee">
+                    <div class="marquee-content">
+                        <a href="https://www.instagram.com/divatrans_/" class="marquee-item">[ INSTAGRAM ]</a>
+                        <a href="https://linkedin.com/in/gutiamanda/" class="marquee-item">[ LINKEDIN ]</a>
+                        <a href="https://x.com/divatrans_" class="marquee-item">[ TWITTER/X ]</a>
+                        <a href="https://gutimanda.wordpress.com/" class="marquee-item">[ BLOG ]</a>
+                        <a href="https://cafecomtrans.com.br" class="marquee-item">[ CAFÉ COM TRANS ]</a>
+                        <a href="https://www.instagram.com/divatrans_/" class="marquee-item">[ INSTAGRAM ]</a>
+                        <a href="https://linkedin.com/in/gutiamanda/" class="marquee-item">[ LINKEDIN ]</a>
+                        <a href="https://x.com/divatrans_" class="marquee-item">[ TWITTER/X ]</a>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <a href="index.html" class="border border-white text-white px-6 py-2 text-xs hover:bg-white hover:text-black transition-all">
+                        <-- BACK_TO_HOME
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+        let fontSize = 16, columns, drops;
+
+        function initMatrix() {
+            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth;
+            columns = Math.floor(canvas.width / fontSize);
+            drops = Array(columns).fill(1);
+        }
+
+        const chars = "01<>/{}[]$#@!*&^%+=-~|";
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00ff9f";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        initMatrix();
+        setInterval(draw, 35);
+        window.onresize = initMatrix;
+    </script>
+</body>
+</html>
