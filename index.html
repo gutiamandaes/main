@@ -26,15 +26,27 @@
             text-shadow: 0 0 8px rgba(0, 255, 159, 0.5);
         }
 
-        /* Nova classe para o Rosa */
         .command-pink {
             color: #ff00ff;
             text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
         }
 
-        canvas {
-            display: block;
+        /* Cursor piscante para o efeito de digitação */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: #00ff9f;
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
         }
+
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        canvas { display: block; }
     </style>
 </head>
 <body>
@@ -62,15 +74,12 @@
                     <span class="command-pink">whoami</span>
                 </div>
                 
-                <div class="mb-10">
-                    <h1 class="text-3xl md:text-5xl font-bold matrix-text mb-2">
+                <div class="mb-10 min-h-[120px]"> <h1 class="text-3xl md:text-5xl font-bold matrix-text mb-2">
                         Amanda Gutierrez
                     </h1>
-                    <p class="text-gray-400 text-sm md:text-base">
-                        > Cybersecurity Enthusiast<br>
-                        > Full Stack Developer<br>
-                        > Terminal Specialist
-                    </p>
+                    <div class="text-gray-400 text-sm md:text-xl flex items-center">
+                        <span id="typewriter"></span><span class="cursor">&nbsp;</span>
+                    </div>
                 </div>
 
                 <div class="mb-4">
@@ -99,48 +108,61 @@
     </main>
 
     <script>
+        // --- EFEITO MATRIX ---
         const canvas = document.getElementById("matrix");
         const ctx = canvas.getContext("2d");
-
-        let fontSize = 16;
-        let columns;
-        let drops;
+        let fontSize = 16, columns, drops;
 
         function initCanvas() {
             canvas.height = window.innerHeight;
             canvas.width = window.innerWidth;
             columns = Math.floor(canvas.width / fontSize);
             drops = [];
-            for (let x = 0; x < columns; x++) {
-                drops[x] = Math.random() * -100;
-            }
+            for (let x = 0; x < columns; x++) drops[x] = Math.random() * -100;
         }
 
         initCanvas();
-
         const chars = "01<>/{}[]$#@!*&^%+=-~|ZXYWVU";
 
-        function draw() {
+        function drawMatrix() {
             ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             ctx.fillStyle = "#00ff9f"; 
             ctx.font = fontSize + "px monospace";
-
             for (let i = 0; i < drops.length; i++) {
                 const text = chars.charAt(Math.floor(Math.random() * chars.length));
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             }
         }
-
-        setInterval(draw, 35);
+        setInterval(drawMatrix, 35);
         window.addEventListener("resize", initCanvas);
-    </script>
 
-</body>
-</html>
+        // --- EFEITO DIGITAÇÃO (TYPEWRITER) ---
+        const textElement = document.getElementById("typewriter");
+        const professions = [
+            "> Cybersecurity Enthusiast",
+            "> Full Stack Developer",
+            "> Terminal Specialist"
+        ];
+        
+        let profIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentProf = professions[profIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentProf.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; // Apaga mais rápido
+            } else {
+                textElement.textContent = currentProf.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 150; // Escreve em velocidade normal
+            }
+
+            if (!isDeleting && charIndex === currentProf.length)
