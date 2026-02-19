@@ -189,6 +189,30 @@
         // Inicia a digitação após o carregamento
         window.onload = type;
     </script>
+<script>
+// FUNÇÃO DE BUSCA NO BLOG
+function searchBlog() {
+    const input = document.getElementById('blogSearch');
+    const query = input.value.trim();
+    
+    if (query !== "") {
+        // Esta URL é o padrão de busca do WordPress
+        const searchUrl = "https://gutimanda.wordpress.com/?s=" + encodeURIComponent(query);
+        window.open(searchUrl, '_blank');
+    } else {
+        alert("Por favor, digite algo para buscar.");
+    }
+}
 
+// Isso faz o botão ENTER do teclado também disparar a busca
+document.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        const input = document.getElementById('blogSearch');
+        if (document.activeElement === input) {
+            searchBlog();
+        }
+    }
+});
+</script>
 </body>
 </html>
