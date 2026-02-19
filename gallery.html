@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal | Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow-x: hidden;
+            font-family: 'Courier New', monospace;
+        }
+
+        .glass {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 159, 0.2);
+        }
+
+        .command-pink {
+            color: #ff00ff;
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+        }
+
+        .matrix-text {
+            color: #00ff9f;
+            text-shadow: 0 0 8px rgba(0, 255, 159, 0.5);
+        }
+
+        canvas { display: block; }
+
+        /* Efeito de brilho nas fotos ao passar o mouse */
+        .img-card {
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+        }
+        .img-card:hover {
+            border-color: #ff00ff;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix" class="fixed top-0 left-0 z-0"></canvas>
+
+    <main class="relative z-10 w-full min-h-screen flex flex-col items-center p-8">
+        
+        <div class="glass w-full max-w-5xl rounded-lg overflow-hidden shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+            
+            <div class="bg-[#1a1a1a] p-3 flex items-center border-b border-gray-800">
+                <div class="flex space-x-2">
+                    <a href="index.html" class="w-3 h-3 rounded-full bg-red-500 hover:opacity-80" title="Voltar"></a>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div class="flex-1 text-center mr-8">
+                    <span class="text-xs text-gray-500 font-mono">amanda@cyber:~/gallery</span>
+                </div>
+            </div>
+
+            <div class="p-6 md:p-10 font-mono">
+                <div class="mb-6">
+                    <span class="text-[#00ff9f]">$</span> 
+                    <span class="command-pink">ls ./media/images</span>
+                </div>
+
+                <h1 class="text-2xl md:text-4xl font-bold text-white mb-8 border-b border-gray-800 pb-4">
+                    [ Galeria de Arquivos ]
+                </h1>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="img-card bg-black rounded p-2">
+                        <img src="sua-foto1.jpg" alt="Work" class="w-full h-48 object-cover rounded mb-2">
+                        <p class="text-[10px] text-gray-500 uppercase">img_001.png</p>
+                        <p class="text-xs text-[#00ff9f]">Type: Decrypted Image</p>
+                    </div>
+
+                    <div class="img-card bg-black rounded p-2">
+                        <img src="sua-foto2.jpg" alt="Setup" class="w-full h-48 object-cover rounded mb-2">
+                        <p class="text-[10px] text-gray-500 uppercase">setup_final.jpg</p>
+                        <p class="text-xs text-[#00ff9f]">Type: System Capture</p>
+                    </div>
+
+                    <div class="img-card bg-black rounded p-2">
+                        <img src="sua-foto3.jpg" alt="Cyber" class="w-full h-48 object-cover rounded mb-2">
+                        <p class="text-[10px] text-gray-500 uppercase">script_view.png</p>
+                        <p class="text-xs text-[#00ff9f]">Type: Encrypted Data</p>
+                    </div>
+
+                </div>
+
+                <div class="mt-12">
+                    <a href="index.html" class="inline-block border border-white text-white px-6 py-2 text-sm hover:bg-white hover:text-black transition-all">
+                        <-- VOLTAR_PARA_HOME
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // EFEITO MATRIX (Mesmo do Index para manter fluidez)
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+        let fontSize = 16, columns, drops;
+
+        function initCanvas() {
+            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth;
+            columns = Math.floor(canvas.width / fontSize);
+            drops = [];
+            for (let x = 0; x < columns; x++) drops[x] = Math.random() * -100;
+        }
+
+        initCanvas();
+        const chars = "01<>/{}[]$#@!*&^%+=-~|ZXYWVU";
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.1)"; // Um pouco mais escuro para a galeria
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00ff9f"; 
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 35);
+        window.addEventListener("resize", initCanvas);
+    </script>
+
+</body>
+</html>
