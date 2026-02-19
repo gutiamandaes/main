@@ -10,194 +10,176 @@
             margin: 0;
             padding: 0;
             background-color: black;
-            overflow-x: hidden;
             font-family: 'Courier New', monospace;
+            color: white;
         }
 
-        /* Efeito de Vidro Embaçado */
-        .glass {
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 255, 159, 0.2);
+        /* Fundo Matrix */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
 
-        .command-pink {
-            color: #ff00ff;
-            text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
-        }
-
-        .matrix-text {
-            color: #00ff9f;
-            text-shadow: 0 0 8px rgba(0, 255, 159, 0.5);
-        }
-
-        /* Estilo dos Cards de Foto */
-        .photo-card {
-            background: rgba(0, 0, 0, 0.6);
+        /* Janela Estilo Terminal */
+        .terminal-window {
+            background: rgba(13, 13, 13, 0.95);
             border: 1px solid #333;
-            transition: all 0.4s ease;
-            position: relative;
+            border-radius: 8px;
             overflow: hidden;
+            margin: 40px auto;
+            max-width: 1000px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        .photo-card:hover {
-            border-color: #ff00ff;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
-            transform: translateY(-5px);
+        .terminal-header {
+            background: #1a1a1a;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
         }
 
-        .photo-card img {
-            transition: transform 0.5s ease;
-            filter: grayscale(30%);
+        /* Moldura das fotos igual à sua imagem */
+        .photo-frame {
+            border: 2px solid #00ff9f; /* Verde Matrix */
+            border-radius: 8px;
+            padding: 10px;
+            background: rgba(0,0,0,0.5);
+            transition: all 0.3s;
         }
 
-        .photo-card:hover img {
-            transform: scale(1.05);
-            filter: grayscale(0%);
+        /* Alternar cores das bordas como na imagem */
+        .photo-frame:nth-child(even) { border-color: #ff00ff; } /* Rosa */
+
+        .photo-frame:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(0, 255, 159, 0.2);
         }
 
-        canvas { display: block; }
+        .photo-frame img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+        }
     </style>
 </head>
 <body>
 
-    <canvas id="matrix" class="fixed top-0 left-0 z-0"></canvas>
+<canvas id="matrix"></canvas>
 
-    <main class="relative z-10 w-full min-h-screen flex flex-col items-center p-4 md:p-12">
-        
-        <div class="glass w-full max-w-6xl rounded-lg overflow-hidden shadow-2xl">
-            
-            <div class="bg-[#1a1a1a] p-3 flex items-center border-b border-gray-800">
-                <div class="flex space-x-2">
-                    <a href="index.html" class="w-3 h-3 rounded-full bg-red-500 hover:scale-110 transition-transform"></a>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-                <div class="flex-1 text-center mr-8">
-                    <span class="text-xs text-gray-500 font-mono">amanda@cyber:~/gallery</span>
-                </div>
+<div class="p-4">
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="flex space-x-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <div class="flex-1 text-center text-xs text-gray-500">amanda@cyber:~/gallery</div>
+        </div>
+
+        <div class="p-6 md:p-10">
+            <div class="mb-6">
+                <span class="text-[#00ff9f]">$</span> <span class="text-[#ff00ff]">ls ./media/images</span>
             </div>
 
-            <div class="p-6 md:p-10 font-mono">
-                <div class="mb-8">
-                    <div class="flex items-center gap-2">
-                        <span class="text-[#00ff9f]">$</span>
-                        <span class="command-pink">init --view-images --all</span>
+            <h1 class="text-3xl font-bold mb-10 tracking-widest">[ Galeria de Arquivos ]</h1>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                
+                <div class="photo-frame">
+                    <img src="https://amanda.free.nf/gallery_gen/da0407f631462e56f99fc378922d4343_fit.png" alt="IMG_001">
+                    <div class="mt-3 text-[10px] text-gray-400">
+                        <p>INC_001.RAW</p>
+                        <p class="text-[#00ff9f]">Type: DECRYPTED</p>
                     </div>
-                    <p class="text-gray-400 text-xs mt-2 italic">
-                        "Welcome to my world, where every image whispers a fragment of my story in Spain."
-                    </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    
-                    <div class="photo-card rounded p-1">
-                        <img src="https://amanda.free.nf/gallery_gen/da0407f631462e56f99fc378922d4343_fit.png" alt="Amanda" class="w-full h-64 object-cover">
-                        <div class="p-2">
-                            <p class="text-[10px] text-gray-500">IMG_001.RAW</p>
-                            <p class="text-[10px] text-[#00ff9f]">STATUS: DECRYPTED</p>
-                        </div>
+                <div class="photo-frame">
+                    <img src="https://amanda.free.nf/gallery_gen/1998c7e511c1e6bec32d22eaae3bb1d2_fit.png" alt="IMG_002">
+                    <div class="mt-3 text-[10px] text-gray-400">
+                        <p>IMG_002.RAW</p>
+                        <p class="text-[#00ff9f]">Type: DECRYPTED</p>
                     </div>
-
-                    <div class="photo-card rounded p-1">
-                        <img src="https://amanda.free.nf/gallery_gen/1998c7e511c1e6bec32d22eaae3bb1d2_fit.png" alt="Amanda" class="w-full h-64 object-cover">
-                        <div class="p-2">
-                            <p class="text-[10px] text-gray-500">IMG_002.RAW</p>
-                            <p class="text-[10px] text-[#00ff9f]">STATUS: DECRYPTED</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card rounded p-1">
-                        <img src="https://amanda.free.nf/gallery_gen/e4105c21170aa3ef4c69ecb50f53e45c_fit.png" alt="Amanda" class="w-full h-64 object-cover">
-                        <div class="p-2">
-                            <p class="text-[10px] text-gray-500">IMG_003.RAW</p>
-                            <p class="text-[10px] text-[#00ff9f]">STATUS: DECRYPTED</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card rounded p-1">
-                        <img src="https://amanda.free.nf/gallery_gen/4e702efcb32daf57fa5c85a0890838be_fit.png" alt="Amanda" class="w-full h-64 object-cover">
-                        <div class="p-2">
-                            <p class="text-[10px] text-gray-500">IMG_004.RAW</p>
-                            <p class="text-[10px] text-[#00ff9f]">STATUS: DECRYPTED</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card rounded p-1">
-                        <img src="https://amanda.free.nf/gallery_gen/a266731534d22bf0523425f111b078db_fit.png" alt="Amanda" class="w-full h-64 object-cover">
-                        <div class="p-2">
-                            <p class="text-[10px] text-gray-500">IMG_005.RAW</p>
-                            <p class="text-[10px] text-[#00ff9f]">STATUS: DECRYPTED</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card rounded p-1">
-                        <img src="https://amanda.free.nf/gallery_gen/d66ee6934fd1fd467953f6c8ecf4b80f_fit.png" alt="Amanda" class="w-full h-64 object-cover">
-                        <div class="p-2">
-                            <p class="text-[10px] text-gray-500">IMG_006.RAW</p>
-                            <p class="text-[10px] text-[#00ff9f]">STATUS: DECRYPTED</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card rounded p-1">
-                        <img src="https://amanda.free.nf/gallery_gen/1f172fa3c32e25c2b9aef0bb6115f8d8_fit.png" alt="Amanda" class="w-full h-64 object-cover">
-                        <div class="p-2">
-                            <p class="text-[10px] text-gray-500">IMG_007.RAW</p>
-                            <p class="text-[10px] text-[#00ff9f]">STATUS: DECRYPTED</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card rounded p-1">
-                        <img src="https://amanda.free.nf/gallery_gen/abd8de96d1333a9ea1d5b35c6d015597_fit.png" alt="Amanda" class="w-full h-64 object-cover">
-                        <div class="p-2">
-                            <p class="text-[10px] text-gray-500">IMG_008.RAW</p>
-                            <p class="text-[10px] text-[#00ff9f]">STATUS: DECRYPTED</p>
-                        </div>
-                    </div>
-
                 </div>
 
-                <div class="mt-12 flex justify-between items-center border-t border-gray-800 pt-6">
-                    <a href="index.html" class="border border-white text-white px-4 py-2 text-xs hover:bg-white hover:text-black transition-all">
-                        <-- EXIT_TO_MAIN_TERMINAL
-                    </a>
-                    <span class="text-gray-600 text-[10px]">TOTAL FILES: 08 // STORAGE: Spain_Server</span>
+                <div class="photo-frame">
+                    <img src="https://amanda.free.nf/gallery_gen/e4105c21170aa3ef4c69ecb50f53e45c_fit.png" alt="IMG_003">
+                    <div class="mt-3 text-[10px] text-gray-400">
+                        <p>IMG_003.RAW</p>
+                        <p class="text-[#00ff9f]">Type: DECRYPTED</p>
+                    </div>
                 </div>
+
+                <div class="photo-frame">
+                    <img src="https://amanda.free.nf/gallery_gen/4e702efcb32daf57fa5c85a0890838be_fit.png" alt="IMG_004">
+                    <div class="mt-3 text-[10px] text-gray-400">
+                        <p>IMG_004.RAW</p>
+                        <p class="text-[#00ff9f]">Type: DECRYPTED</p>
+                    </div>
+                </div>
+
+                <div class="photo-frame">
+                    <img src="https://amanda.free.nf/gallery_gen/a266731534d22bf0523425f111b078db_fit.png" alt="IMG_005">
+                    <div class="mt-3 text-[10px] text-gray-400">
+                        <p>IMG_005.RAW</p>
+                        <p class="text-[#00ff9f]">Type: DECRYPTED</p>
+                    </div>
+                </div>
+
+                <div class="photo-frame">
+                    <img src="https://amanda.free.nf/gallery_gen/abd8de96d1333a9ea1d5b35c6d015597_fit.png" alt="IMG_006">
+                    <div class="mt-3 text-[10px] text-gray-400">
+                        <p>IMG_006.RAW</p>
+                        <p class="text-[#00ff9f]">Type: DECRYPTED</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-12">
+                <a href="index.html" class="border border-white text-white px-6 py-2 hover:bg-white hover:text-black transition-all text-sm">
+                    <-- VOLTAR_PARA_HOME
+                </a>
             </div>
         </div>
-    </main>
+    </div>
+</div>
 
-    <script>
-        const canvas = document.getElementById("matrix");
-        const ctx = canvas.getContext("2d");
-        let fontSize = 16, columns, drops;
+<script>
+    // Matrix Effect
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+    let fontSize = 16, columns, drops;
 
-        function initCanvas() {
-            canvas.height = window.innerHeight;
-            canvas.width = window.innerWidth;
-            columns = Math.floor(canvas.width / fontSize);
-            drops = [];
-            for (let x = 0; x < columns; x++) drops[x] = Math.random() * -100;
+    function initMatrix() {
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(1);
+    }
+
+    const chars = "01<>/{}[]$#@!*&^%+=-~|";
+    function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00ff9f";
+        ctx.font = fontSize + "px monospace";
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
         }
+    }
+    initMatrix();
+    setInterval(draw, 35);
+    window.onresize = initMatrix;
+</script>
 
-        initCanvas();
-        const chars = "01<>/{}[]$#@!*&^%+=-~|ZXYWVU";
-
-        function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#00ff9f"; 
-            ctx.font = fontSize + "px monospace";
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(draw, 35);
-        window.addEventListener("resize", initCanvas);
-    </script>
 </body>
 </html>
