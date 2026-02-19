@@ -41,13 +41,39 @@
             border-bottom: 1px solid #333;
         }
 
-        /* Moldura das fotos igual à sua imagem */
-        .photo-frame {
-            border: 2px solid #00ff9f; /* Verde Matrix */
-            border-radius: 8px;
-            padding: 10px;
-            background: rgba(0,0,0,0.5);
-            transition: all 0.3s;
+      /* Moldura das fotos */
+.photo-frame {
+    border: 2px solid #00ff9f;
+    border-radius: 8px;
+    padding: 10px;
+    background: rgba(0,0,0,0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animação mais suave e com 'bounce' */
+    overflow: hidden; /* Garante que a foto não saia da borda ao crescer */
+}
+
+/* Estado Inicial da Foto (Pequena) */
+.photo-frame img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    transform: scale(0.8); /* Começa menor (80% do tamanho) */
+    filter: grayscale(80%) blur(1px); /* Fica meio apagada e sem cor */
+    transition: all 0.4s ease;
+}
+
+/* Estado quando passa o mouse (Cresce e ganha cor) */
+.photo-frame:hover img {
+    transform: scale(1.1); /* Cresce para 110% do tamanho */
+    filter: grayscale(0%) blur(0px); /* Ganha cor total e nitidez */
+}
+
+/* Ajuste na moldura ao passar o mouse */
+.photo-frame:hover {
+    border-color: white; /* A borda muda para branco para destacar */
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
         }
 
         /* Alternar cores das bordas como na imagem */
