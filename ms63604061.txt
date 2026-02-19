@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "amanda.is-a.dev",
+  "Id": "9dd143de-4cad-4b62-a857-3578a0f53645"
+}
