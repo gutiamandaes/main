@@ -10,11 +10,10 @@
             margin: 0;
             padding: 0;
             background-color: black;
-            overflow: hidden; /* Impede scroll enquanto o efeito Matrix roda */
+            overflow: hidden;
             font-family: 'Courier New', monospace;
         }
 
-        /* Efeito de desfoque no fundo da janela (Glassmorphism) */
         .glass {
             background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(10px);
@@ -22,10 +21,15 @@
             border: 1px solid rgba(0, 255, 159, 0.2);
         }
 
-        /* Brilho suave no texto verde */
         .matrix-text {
             color: #00ff9f;
             text-shadow: 0 0 8px rgba(0, 255, 159, 0.5);
+        }
+
+        /* Nova classe para o Rosa */
+        .command-pink {
+            color: #ff00ff;
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
         }
 
         canvas {
@@ -55,10 +59,10 @@
             <div class="p-6 md:p-10 font-mono">
                 <div class="mb-4">
                     <span class="text-[#00ff9f]">$</span> 
-                    <span class="text-white">whoami</span>
+                    <span class="command-pink">whoami</span>
                 </div>
                 
-                <div class="mb-8">
+                <div class="mb-10">
                     <h1 class="text-3xl md:text-5xl font-bold matrix-text mb-2">
                         Amanda Gutierrez
                     </h1>
@@ -71,7 +75,7 @@
 
                 <div class="mb-4">
                     <span class="text-[#00ff9f]">$</span> 
-                    <span class="text-white">ls ./links</span>
+                    <span class="command-pink">ls ./links</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 ml-4">
@@ -108,7 +112,7 @@
             columns = Math.floor(canvas.width / fontSize);
             drops = [];
             for (let x = 0; x < columns; x++) {
-                drops[x] = Math.random() * -100; // Começo aleatório para não caírem todas juntas
+                drops[x] = Math.random() * -100;
             }
         }
 
@@ -117,33 +121,25 @@
         const chars = "01<>/{}[]$#@!*&^%+=-~|ZXYWVU";
 
         function draw() {
-            // Fundo preto com opacidade baixa para criar o rastro
             ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = "#00ff9f"; // Cor das letras
+            ctx.fillStyle = "#00ff9f"; 
             ctx.font = fontSize + "px monospace";
 
             for (let i = 0; i < drops.length; i++) {
                 const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                
-                // Desenha a letra
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-                // Reseta a posição se sair da tela
                 if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
                 }
-
                 drops[i]++;
             }
         }
 
         setInterval(draw, 35);
-
-        window.addEventListener("resize", () => {
-            initCanvas();
-        });
+        window.addEventListener("resize", initCanvas);
     </script>
 
 </body>
