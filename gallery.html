@@ -41,32 +41,40 @@
             border-bottom: 1px solid #333;
         }
 
-      /* Moldura das fotos */
+   /* Moldura das fotos - Agora menores */
 .photo-frame {
     border: 2px solid #00ff9f;
     border-radius: 8px;
-    padding: 10px;
-    background: rgba(0,0,0,0.5);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animação mais suave e com 'bounce' */
-    overflow: hidden; /* Garante que a foto não saia da borda ao crescer */
+    padding: 8px;
+    background: rgba(0,0,0,0.6);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    cursor: pointer;
 }
 
-/* Estado Inicial da Foto (Pequena) */
+/* Efeito nas fotos: começam pequenas (scale 0.7) */
 .photo-frame img {
     width: 100%;
-    height: 200px;
+    height: 150px; /* Reduzi a altura padrão */
     object-fit: cover;
     border-radius: 4px;
     display: block;
-    transform: scale(0.8); /* Começa menor (80% do tamanho) */
-    filter: grayscale(80%) blur(1px); /* Fica meio apagada e sem cor */
-    transition: all 0.4s ease;
+    transform: scale(0.7); /* Foto bem pequena por padrão */
+    filter: grayscale(100%) opacity(0.6); /* P&B e meio transparente */
+    transition: all 0.4s ease-in-out;
 }
 
-/* Estado quando passa o mouse (Cresce e ganha cor) */
+/* Quando passa o mouse: cresce e fica colorida */
 .photo-frame:hover img {
-    transform: scale(1.1); /* Cresce para 110% do tamanho */
-    filter: grayscale(0%) blur(0px); /* Ganha cor total e nitidez */
+    transform: scale(1.1); /* Expande para além da moldura */
+    filter: grayscale(0%) opacity(1);
+}
+
+/* Alternância de cores das bordas (Verde e Rosa) */
+.photo-frame:nth-child(even) { border-color: #ff00ff; }
+.photo-frame:hover {
+    border-color: white;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 /* Ajuste na moldura ao passar o mouse */
