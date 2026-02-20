@@ -29,7 +29,7 @@
         .cursor {
             display: inline-block;
             width: 10px;
-            background-color: #00ff9f;
+            background-color: #ffffff;
             margin-left: 5px;
             animation: blink 0.7s infinite;
         }
@@ -64,7 +64,7 @@
 
             <div class="p-6 md:p-10 font-mono">
                 <div class="mb-4">
-                    <span class="text-[#00ff9f]">$</span> 
+                    <span class="text-[#ffffff]">$</span> 
                     <span class="command-pink">whoami</span>
                 </div>
                 
@@ -89,7 +89,7 @@
 
 <div class="mt-16 ml-4">
     <div class="flex items-center gap-2">
-        <span class="text-[#00ff9f] font-mono text-sm">amanda@cyber:~$ search --blog</span>
+        <span class="text-[#ffffff] font-mono text-sm">amanda@cyber:~$ search --blog</span>
     </div>
     <div class="mt-2 flex max-w-md">
         <input type="text" id="blogSearch" 
@@ -136,7 +136,7 @@
         function drawMatrix() {
             ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#00ff9f"; 
+            ctx.fillStyle = "#ffffff"; 
             ctx.font = fontSize + "px monospace";
             for (let i = 0; i < drops.length; i++) {
                 const text = chars.charAt(Math.floor(Math.random() * chars.length));
