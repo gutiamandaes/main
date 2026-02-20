@@ -22,16 +22,24 @@
             z-index: -1;
         }
 
-        /* Janela Estilo Terminal */
-        .terminal-window {
+      /* Janela Estilo Terminal - Versão Ampliada */
+          .terminal-window {
             background: rgba(13, 13, 13, 0.95);
             border: 1px solid #333;
             border-radius: 8px;
             overflow: hidden;
-            margin: 40px auto;
-            max-width: 1000px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
+            margin: 20px auto; /* Reduzi a margem superior para subir um pouco mais */
+    
+           /* Aumentando a largura máxima */
+            max-width: 1300px; 
+    
+          /* Garantindo que ela use 90% da largura em telas menores */
+            width: 90%; 
+    
+          /* Opcional: define uma altura mínima para não ficar "achatada" */
+              min-height: 600px; 
+              box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
 
         .terminal-header {
             background: #1a1a1a;
