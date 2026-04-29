@@ -41,6 +41,21 @@
         }
 
         canvas { display: block; }
+
+        /* Estilo extra para o contador discreto */
+        #visit-counter {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            font-size: 10px;
+            color: #444;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            z-index: 100;
+        }
+        #visit-counter:hover {
+            color: #ff00ff;
+        }
     </style>
 </head>
 <body>
@@ -77,45 +92,46 @@
                     </div>
                 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 ml-4">
-    <a href="gallery.html" class="border border-[#ff00ff] text-[#ff00ff] px-4 py-2 text-sm hover:bg-[#ff00ff] hover:text-black transition-all text-center shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-        [ GALLERY ]
-
-    
-    <a href="contact.html" class="border border-[#ff00ff] text-[#ff00ff] px-4 py-2 text-sm hover:bg-[#ff00ff] hover:text-black transition-all text-center shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-        [ CONTACT ]
-
-    </a>
-</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 ml-4">
+                    <a href="gallery.html" class="border border-[#ff00ff] text-[#ff00ff] px-4 py-2 text-sm hover:bg-[#ff00ff] hover:text-black transition-all text-center shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                        [ GALLERY ]
+                    </a>
+                    
+                    <a href="contact.html" class="border border-[#ff00ff] text-[#ff00ff] px-4 py-2 text-sm hover:bg-[#ff00ff] hover:text-black transition-all text-center shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                        [ CONTACT ]
+                    </a>
+                </div>
 
                 <div class="mt-16 ml-4">
-    <div class="flex items-center gap-2">
-        <span class="command-pink font-mono text-sm">amanda@cyber:~$ search --blog</span>
-    </div>
-    <div class="mt-2 flex max-w-md">
-        <input type="text" id="blogSearch" 
-               class="bg-transparent border border-white text-white p-2 font-mono text-sm w-full outline-none focus:border-[#ff00ff] focus:shadow-[0_0_10px_rgba(255,0,255,0.3)] transition-all" 
-               placeholder="digite aqui...">
-        
-        <button onclick="searchBlog()" 
-                class="bg-white text-black px-4 py-2 font-bold text-xs hover:bg-[#ff00ff] hover:text-white transition-all">
-            EXE
-        </button>
-    </div>
-</div>
+                    <div class="flex items-center gap-2">
+                        <span class="command-pink font-mono text-sm">amanda@cyber:~$ search --blog</span>
+                    </div>
+                    <div class="mt-2 flex max-w-md">
+                        <input type="text" id="blogSearch" 
+                               class="bg-transparent border border-white text-white p-2 font-mono text-sm w-full outline-none focus:border-[#ff00ff] focus:shadow-[0_0_10px_rgba(255,0,255,0.3)] transition-all" 
+                               placeholder="digite aqui...">
+                        
+                        <button onclick="searchBlog()" 
+                                class="bg-white text-black px-4 py-2 font-bold text-xs hover:bg-[#ff00ff] hover:text-white transition-all">
+                            EXE
+                        </button>
+                    </div>
+                </div>
 
-                
                 <div class="mt-10 text-xs text-gray-600 animate-pulse">
                     Aguardando comandos... _
                 </div>
             </div>
         </div>
 
-        
         <footer class="mt-8 text-gray-500 text-[10px] uppercase tracking-widest">
             &copy; 2026 Connection Established
         </footer>
     </main>
+
+    <div id="visit-counter">
+        SYS_VISITS: <span id="count_value">...</span>
+    </div>
 
     <script>
         // --- EFEITO MATRIX ---
@@ -156,7 +172,8 @@
             "> Podcast Owner",
             "> Microsoft Enthusiast",
             "> Dona do site GAY FM Brasil",
-            "> É ORIGAMIIIIII, GATA!!!!",        ];
+            "> É ORIGAMIIIIII, GATA!!!!"
+        ];
         
         let profIndex = 0;
         let charIndex = 0;
@@ -188,33 +205,42 @@
             setTimeout(type, typeSpeed);
         }
 
-        // Inicia a digitação após o carregamento
-        window.onload = type;
-    </script>
-<script>
-// FUNÇÃO DE BUSCA NO BLOG
-function searchBlog() {
-    const input = document.getElementById('blogSearch');
-    const query = input.value.trim();
-    
-    if (query !== "") {
-        // Esta URL é o padrão de busca do WordPress
-        const searchUrl = "https://gutimanda.wordpress.com/?s=" + encodeURIComponent(query);
-        window.open(searchUrl, '_blank');
-    } else {
-        alert("Por favor, digite algo para buscar.");
-    }
-}
-
-// Isso faz o botão ENTER do teclado também disparar a busca
-document.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        const input = document.getElementById('blogSearch');
-        if (document.activeElement === input) {
-            searchBlog();
+        // --- FUNÇÃO DE BUSCA NO BLOG ---
+        function searchBlog() {
+            const input = document.getElementById('blogSearch');
+            const query = input.value.trim();
+            
+            if (query !== "") {
+                const searchUrl = "https://gutimanda.wordpress.com/?s=" + encodeURIComponent(query);
+                window.open(searchUrl, '_blank');
+            } else {
+                alert("Por favor, digite algo para buscar.");
+            }
         }
-    }
-});
-</script>
+
+        document.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const input = document.getElementById('blogSearch');
+                if (document.activeElement === input) {
+                    searchBlog();
+                }
+            }
+        });
+
+        // --- CONTADOR DE VISITAS (Simples LocalStorage) ---
+        // Nota: Como APIs externas de contagem gratuita costumam cair, 
+        // este script simula o contador ou pode ser conectado a um serviço.
+        function updateCounter() {
+            let visits = localStorage.getItem('site_visits') || 0;
+            visits++;
+            localStorage.setItem('site_visits', visits);
+            document.getElementById('count_value').textContent = visits.toString().padStart(5, '0');
+        }
+
+        window.onload = () => {
+            type();
+            updateCounter();
+        };
+    </script>
 </body>
 </html>
